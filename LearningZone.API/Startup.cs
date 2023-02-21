@@ -1,7 +1,8 @@
 using LearningZone.Core.Common;
+using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using LearningZone.Infra.Common;
-using LearningZone.Core.Repository;
+using LearningZone.Infra.Repository;
 using LearningZone.Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -36,8 +37,11 @@ namespace LearningZone.API
             services.AddControllers();
             services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+            services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
