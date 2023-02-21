@@ -46,7 +46,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("IDD", id, DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<FinalComment> comments = dbContext.Connection.Query<FinalComment>("Final_Comment_Package.GetCommentByID"
+            IEnumerable<FinalComment> comments = dbContext.Connection.Query<FinalComment>("Final_Comment_Package.GetCommentByID",p
                 , commandType: CommandType.StoredProcedure);
             return comments.FirstOrDefault();
         }
