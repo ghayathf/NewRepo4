@@ -1,4 +1,7 @@
+using LearningZone.Core.Common;
 using LearningZone.Core.Repository;
+using LearningZone.Core.Service;
+using LearningZone.Infra.Common;
 using LearningZone.Infra.Repository;
 using LearningZone.Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -31,12 +34,13 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IAttendanceRepository, Infra.Repository.AttendaceRepository>();
-            services.AddScoped<IAttendeceService, Infra.Service.AttendaceService>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IHomeService, HomeService>();
 
 
 
-
+            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+            services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,6 +56,7 @@ namespace LearningZone.API
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKeyGhayath"))
                     };
                 });
+
             services.AddControllers();
             services.AddScoped<IAboutusRepository, AboutusRepository>();
             services.AddScoped<IAboutusService, AboutusService>();
