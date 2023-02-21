@@ -8,7 +8,5 @@ namespace LearningZone.Core.Common
     public interface IDbContext
     {
         DbConnection Connection { get; }
-        //564
-        //456
     }
 }
