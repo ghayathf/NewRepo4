@@ -34,12 +34,11 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddScoped<IHomeService, HomeService>();
-            services.AddScoped<IAdminRepository, AdminRepository>();
-            services.AddScoped<IAdminService, AdminService>();
+
+
+
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
@@ -71,6 +70,10 @@ namespace LearningZone.API
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IReplyRepository, ReplyRepository>();
+            services.AddScoped<IReplyService, ReplyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
