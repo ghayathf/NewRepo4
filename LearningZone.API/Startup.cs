@@ -42,6 +42,10 @@ namespace LearningZone.API
             services.AddScoped<IMaterialService, MaterialService>();
             services.AddScoped<ITraineeRepository, TraineeRepository>();
             services.AddScoped<ITraineeService, TraineeService>();
+            services.AddScoped<ITraineeSectionRepository, TraineeSectionRepository>();
+            services.AddScoped<ITraineeSectionService, TraineeSectionService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
