@@ -31,9 +31,9 @@ namespace LearningZone.Infra.Repository
         public void DeleteTestimonial(int id)
         {
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("ID", id, dbType: DbType.Int32, ParameterDirection.Input);
 
-            var result = _dbContext.Connection.Execute("Final_Testimonial_Package.DELETETestimoniaL", p, commandType: CommandType.StoredProcedure); ;
+            var result = _dbContext.Connection.Execute("Final_Testimonial_Package.DELETETestimoniaL", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<FinalTestimonial> GetAllTestimonial()
@@ -60,7 +60,7 @@ namespace LearningZone.Infra.Repository
             p.Add("USERID", finalTestimonial.UserId, dbType: DbType.String, ParameterDirection.Input);
 
 
-            var result = _dbContext.Connection.Execute("Final_Testimonial_Package.CreateTestimonial", p, commandType: CommandType.StoredProcedure);
+            var result = _dbContext.Connection.Execute("Final_Testimonial_Package.UpdateTestimonial", p, commandType: CommandType.StoredProcedure);
         }
     }
 }
