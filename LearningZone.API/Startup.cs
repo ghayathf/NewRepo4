@@ -1,5 +1,9 @@
+using LearningZone.Core.Common;
 using LearningZone.Core.Repository;
+using LearningZone.Core.Service;
+using LearningZone.Infra.Common;
 using LearningZone.Infra.Repository;
+using LearningZone.Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +34,11 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IAdminService, AdminService>();
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,7 +54,7 @@ namespace LearningZone.API
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKeyGhayath"))
                     };
                 });
-            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
