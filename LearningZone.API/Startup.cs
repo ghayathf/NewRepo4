@@ -1,8 +1,7 @@
 using LearningZone.Core.Common;
-using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using LearningZone.Infra.Common;
-using LearningZone.Infra.Repository;
+using LearningZone.Core.Repository;
 using LearningZone.Infra.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;

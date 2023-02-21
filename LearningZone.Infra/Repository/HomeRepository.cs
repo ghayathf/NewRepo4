@@ -39,6 +39,7 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Id", id, dbType: DbType.String, ParameterDirection.Input);
 
+            var result = _dbContext.Connection.Execute("Final_HomePage_Package.DeleteHOME", p, commandType: CommandType.StoredProcedure); ;
         }
 
         public List<FinalHomepage> GetAllHomeInformation()
