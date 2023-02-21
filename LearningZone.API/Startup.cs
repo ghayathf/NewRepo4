@@ -40,8 +40,6 @@ namespace LearningZone.API
             services.AddScoped<IAttendeceService, AttendaceService>();
             services.AddScoped<IMaterialRepository, MaterialRepository>();
             services.AddScoped<IMaterialService, MaterialService>();
-
-
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
@@ -79,6 +77,8 @@ namespace LearningZone.API
             services.AddScoped<IReplyService, ReplyService>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ISolutionRepository, SolutionRepository>();
+            services.AddScoped<ISolutionService, SolutionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
