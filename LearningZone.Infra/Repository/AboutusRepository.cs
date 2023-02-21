@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LearningZone.Core.Repository
+namespace LearningZone.Infra.Repository
 {
-    public interface IAboutusRepository
+    public class AboutusRepository
     {
-
     }
 }
