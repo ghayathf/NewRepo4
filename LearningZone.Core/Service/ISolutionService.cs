@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LearningZone.Core.Repository
+namespace LearningZone.Core.Service
 {
-    public interface ISolutionRepository
+    public interface ISolutionService
     {
         List<FinalSolution> GetAllSolutions();
         FinalSolution GetSolutionByID(int id);
