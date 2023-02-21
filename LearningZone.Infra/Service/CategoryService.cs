@@ -9,7 +9,7 @@ namespace LearningZone.Infra.Service
 {
     public class CategoryService : ICategoryService
     {
-        public readonly ICategoryRepository categoryRepository;
+        private readonly ICategoryRepository categoryRepository;
         public CategoryService(ICategoryRepository categoryRepository)
         {
             this.categoryRepository = categoryRepository;
