@@ -42,6 +42,8 @@ namespace LearningZone.API
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<ITestimonialService, TestimonialService>();
+            services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            services.AddScoped<IContactUsService, ContactUsService>();
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
