@@ -4,6 +4,7 @@ using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Service
 {
@@ -24,9 +25,9 @@ namespace LearningZone.Infra.Service
             userRepository.DELETEUser(id);
         }
 
-        public List<FinalUser> GETALLUsers()
+        public async Task<List<FinalUser>> GETALLUsers()
         {
-          return  userRepository.GETALLUsers();
+          return await userRepository.GETALLUsers();
         }
 
         public FinalUser GetUserByID(int id)

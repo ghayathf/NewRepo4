@@ -16,7 +16,7 @@ namespace LearningZone.Core.Data
         public decimal? Salary { get; set; }
         public string Trainerposition { get; set; }
         public string Qualification { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? User_Id { get; set; }
 
         public virtual FinalUser User { get; set; }
         public virtual ICollection<FinalSection> FinalSections { get; set; }

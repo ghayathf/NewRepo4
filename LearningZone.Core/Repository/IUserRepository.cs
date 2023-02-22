@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Repository
 {
    public interface IUserRepository
     {
-        List<FinalUser> GETALLUsers();
+        Task<List<FinalUser>> GETALLUsers();
         FinalUser GetUserByID(int id);
         void CREATEUser(FinalUser user);
         void UpdateUser(FinalUser user);

@@ -33,9 +33,9 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllUsers")]
-        public List<FinalUser> GETALLUsers()
+        public async Task<List<FinalUser>> GETALLUsers()
         {
-            return userService.GETALLUsers();
+            return await userService.GETALLUsers();
         }
         [HttpGet]
         [Route("GetUserByID/{id}")]

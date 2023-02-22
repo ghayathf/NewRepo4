@@ -27,8 +27,8 @@ namespace LearningZone.Infra.Repository
             p.Add("end_date", section.Enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("url_meeting", section.Meetingurl, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("capacity_section", section.Sectioncapacity, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("courseid", section.CourseId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("trainerid", section.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("courseid", section.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("trainerid", section.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Section_Package.CreateSection", p, commandType: CommandType.StoredProcedure);
         }
@@ -69,8 +69,8 @@ namespace LearningZone.Infra.Repository
             p.Add("end_date", section.Enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("url_meeting", section.Meetingurl, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("capacity_section", section.Sectioncapacity, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("courseid", section.CourseId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("trainerid", section.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("courseid", section.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("trainerid", section.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Section_Package.UpdateSection", p, commandType: CommandType.StoredProcedure);
         }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -37,12 +38,34 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Execute("Final_User_Package.DELETEUser", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalUser> GETALLUsers()
+        public async Task<List<FinalUser>> GETALLUsers()
         {
-            IEnumerable<FinalUser> result = dbContext.Connection.Query<FinalUser>("Final_User_Package.GETALLUsers",
-               commandType: CommandType.StoredProcedure);
+            var p = new DynamicParameters();
+            var result = await dbContext.Connection.QueryAsync<FinalUser, FinalComment,FinalReply,FinalTestimonial,
+            FinalUser>("Final_User_Package.GETALLUsers",
+            (user, comment, reply, testimonial) =>
+            {
+                user.FinalComments.Add(comment);
+                user.FinalReplies.Add(reply);
+                user.FinalTestimonials.Add(testimonial);
+                return user;
+            },
+            splitOn: "Userid,Commentid,Replyid,TESTIMONIALID"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
 
-            return result.ToList();
+
+            var results = result.GroupBy(p => p.Userid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalComments = g.Select(p => p.FinalComments.Single()).ToList();
+                groupedPost.FinalReplies = g.Select(p => p.FinalReplies.Single()).ToList();
+                groupedPost.FinalTestimonials = g.Select(p => p.FinalTestimonials.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalUser GetUserByID(int id)
