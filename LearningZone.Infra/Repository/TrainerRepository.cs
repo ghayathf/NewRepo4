@@ -12,7 +12,7 @@ namespace LearningZone.Infra.Repository
 {
     public class TrainerRepository : ITrainerRepository
     {
-        public readonly IDbContext dbContext;
+        private readonly IDbContext dbContext;
         public TrainerRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;

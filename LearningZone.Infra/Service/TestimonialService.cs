@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -8,35 +9,35 @@ namespace LearningZone.Infra.Service
 {
     public class TestimonialService : ITestimonialService
     {
-        private readonly ITestimonialService _testimonialService;
+        private readonly ITestimonialRepository testimonialRepository;
 
-        public TestimonialService(ITestimonialService _testimonialService)
+        public TestimonialService(ITestimonialRepository testimonialRepository)
         {
-            this._testimonialService = _testimonialService;
+            this.testimonialRepository = testimonialRepository;
         }
         public void CreateHomeTestimonial(FinalTestimonial finalTestimonial)
         {
-            _testimonialService.CreateHomeTestimonial(finalTestimonial);
+            testimonialRepository.CreateHomeTestimonial(finalTestimonial);
         }
 
         public void DeleteTestimonial(int id)
         {
-            _testimonialService.DeleteTestimonial(id);
+            testimonialRepository.DeleteTestimonial(id);
         }
 
         public List<FinalTestimonial> GetAllTestimonial()
         {
-            return _testimonialService.GetAllTestimonial();
+            return testimonialRepository.GetAllTestimonial();
         }
 
         public FinalTestimonial GetTestimonialById(int id)
         {
-            return _testimonialService.GetTestimonialById(id);
+            return testimonialRepository.GetTestimonialById(id);
         }
 
         public void UpdateTestimonial(FinalTestimonial finalTestimonial)
         {
-            _testimonialService.UpdateTestimonial(finalTestimonial);
+            testimonialRepository.UpdateTestimonial(finalTestimonial);
         }
     }
 }
