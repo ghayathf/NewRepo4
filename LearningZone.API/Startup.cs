@@ -34,6 +34,28 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddScoped<IDbContext, DbContext>();
+            services.AddScoped<IAboutusRepository, AboutusRepository>();
+            services.AddScoped<IAboutusService, AboutusService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IReplyRepository, ReplyRepository>();
+            services.AddScoped<IReplyService, ReplyService>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ISolutionRepository, SolutionRepository>();
+            services.AddScoped<ISolutionService, SolutionService>();
+            services.AddScoped<ITrainerRepository, TrainerRepository>();
+            services.AddScoped<ITrainerService, TrainerService>();
             services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IAttendanceRepository, AttendaceRepository>();
@@ -70,23 +92,7 @@ namespace LearningZone.API
                     };
                 });
 
-            services.AddControllers();
-            services.AddScoped<IAboutusRepository, AboutusRepository>();
-            services.AddScoped<IAboutusService, AboutusService>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<ICourseRepository, CourseRepository>();
-            services.AddScoped<ICourseService, CourseService>();
-            services.AddScoped<IReplyRepository, ReplyRepository>();
-            services.AddScoped<IReplyService, ReplyService>();
-            services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IRoleService, RoleService>();
-            services.AddScoped<ISolutionRepository, SolutionRepository>();
-            services.AddScoped<ISolutionService, SolutionService>();
-            services.AddScoped<ITrainerRepository, TrainerRepository>();
-            services.AddScoped<ITrainerService, TrainerService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
