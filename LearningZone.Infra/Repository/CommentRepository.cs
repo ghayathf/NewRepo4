@@ -22,7 +22,7 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("ComMessage", finalComment.Commentmessage, DbType.String, direction: ParameterDirection.Input);
             p.Add("DatePub", finalComment.Datepublished, DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("UID", finalComment.Datepublished, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UID", finalComment.User_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Comment_Package.CREATEComment", p, commandType: CommandType.StoredProcedure);
         }
@@ -57,7 +57,7 @@ namespace LearningZone.Infra.Repository
             p.Add("IDD", finalComment.Datepublished, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("ComMessage", finalComment.Commentmessage, DbType.String, direction: ParameterDirection.Input);
             p.Add("DatePub", finalComment.Datepublished, DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("UID", finalComment.Datepublished, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UID", finalComment.User_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Comment_Package.UpdateComment", p, commandType: CommandType.StoredProcedure);
         }

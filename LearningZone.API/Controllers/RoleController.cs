@@ -17,6 +17,7 @@ namespace LearningZone.API.Controllers
             _roleService = roleService;
         }
         [HttpGet]
+        [Route("GetAllRoles")]
         public List<FinalRole> GetAllRole()
         {
             return _roleService.GetAllRole();
@@ -28,16 +29,19 @@ namespace LearningZone.API.Controllers
             return _roleService.GetTRoleById(id);
         }
         [HttpPost]
+        [Route("CreateNewRole")]
         public void CreateRole(FinalRole finalRole)
         {
             _roleService.CreateRole(finalRole);
         }
         [HttpPut]
+        [Route("UpdateRole")]
         public void UpdateRole(FinalRole finalRole)
         {
             _roleService.UpdateRole(finalRole);
         }
         [HttpDelete]
+        [Route("DeleteRole")]
         public void DeleteRole(int id)
         {
             _roleService.DeleteRole(id);

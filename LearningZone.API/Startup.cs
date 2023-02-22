@@ -34,20 +34,7 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IHomeRepository, HomeRepository>();
-            services.AddScoped<IHomeService, HomeService>();
-            services.AddScoped<IAttendanceRepository, AttendaceRepository>();
-            services.AddScoped<IAttendeceService, AttendaceService>();
-            services.AddScoped<IMaterialRepository, MaterialRepository>();
-            services.AddScoped<IMaterialService, MaterialService>();
-            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
-            services.AddScoped<ITestimonialService, TestimonialService>();
-            services.AddScoped<IContactUsRepository, ContactUsRepository>();
-            services.AddScoped<IContactUsService, ContactUsService>();
-            services.AddScoped<ICertificateRepository, CertificateRepository>();
-            services.AddScoped<ICertificateService, CertificateService>();
-            services.AddScoped<ISectionRepository, SectionRepository>();
-            services.AddScoped<ISectionService, SectionService>();
+            
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,14 +50,18 @@ namespace LearningZone.API
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKeyGhayath"))
                     };
                 });
-
             services.AddControllers();
+            services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IAboutusRepository, AboutusRepository>();
             services.AddScoped<IAboutusService, AboutusService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IReplyRepository, ReplyRepository>();
@@ -79,11 +70,30 @@ namespace LearningZone.API
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ISolutionRepository, SolutionRepository>();
             services.AddScoped<ISolutionService, SolutionService>();
-            services.AddScoped<ITaskRepository, TaskRepository>();
-            services.AddScoped<ITaskService, TaskService>();
-        }
+            services.AddScoped<ITrainerRepository, TrainerRepository>();
+            services.AddScoped<ITrainerService, TrainerService>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IAttendanceRepository, AttendaceRepository>();
+            services.AddScoped<IAttendeceService, AttendaceService>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IMaterialService, MaterialService>();
+            services.AddScoped<ITraineeRepository, TraineeRepository>();
+            services.AddScoped<ITraineeService, TraineeService>();
+            services.AddScoped<ITraineeSectionRepository, TraineeSectionRepository>();
+            services.AddScoped<ITraineeSectionService, TraineeSectionService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+            services.AddScoped<ITestimonialService, TestimonialService>();
+            services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            services.AddScoped<IContactUsService, ContactUsService>();
+            services.AddScoped<ICertificateRepository, CertificateRepository>();
+            services.AddScoped<ICertificateService, CertificateService>();
+            services.AddScoped<ISectionRepository, SectionRepository>();
+            services.AddScoped<ISectionService, SectionService>();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -92,13 +102,9 @@ namespace LearningZone.API
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthentication();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

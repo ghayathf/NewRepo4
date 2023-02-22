@@ -10,7 +10,7 @@ namespace LearningZone.Core.Data
         public decimal Testimonialid { get; set; }
         public string Testimonialmessage { get; set; }
         public decimal? Testimonialstatus { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? User_Id { get; set; }
 
         public virtual FinalUser User { get; set; }
     }

@@ -12,7 +12,7 @@ namespace LearningZone.Infra.Repository
 {
     public class MaterialRepository : IMaterialRepository
     {
-        private IDbContext dbContext;
+        private readonly IDbContext dbContext;
         public MaterialRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;
@@ -20,9 +20,9 @@ namespace LearningZone.Infra.Repository
         public void CREATEMaterial(FinalMaterial material)
         {
             var p = new DynamicParameters();
-            p.Add("DateUp", material.Dateuploaded, DbType.Date, direction: ParameterDirection.Input);
+            p.Add("DateUp", material.Dateuploaded, DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("MName", material.Materialname, DbType.String, direction: ParameterDirection.Input);
-            p.Add("SecID", material.SectionId, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("SecID", material.Section_Id, DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Material_Package.CREATEMaterial", p, commandType: System.Data.CommandType.StoredProcedure);
         }
 
@@ -51,9 +51,9 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("IDD", material.Materialid, DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("DateUp", material.Dateuploaded, DbType.Date, direction: ParameterDirection.Input);
+            p.Add("DateUp", material.Dateuploaded, DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("MName", material.Materialname, DbType.String, direction: ParameterDirection.Input);
-            p.Add("SecID", material.SectionId, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("SecID", material.Section_Id, DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Material_Package.UpdateMaterial", p, commandType: System.Data.CommandType.StoredProcedure);
         }
     }

@@ -12,7 +12,7 @@ namespace LearningZone.Infra.Repository
 {
     public class AdminRepository: IAdminRepository
     {
-        public readonly IDbContext dbContext;
+        private readonly IDbContext dbContext;
         public AdminRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;
@@ -29,7 +29,7 @@ namespace LearningZone.Infra.Repository
         public void CreateAdmin(FinalAdmin admin)
         {
             var p = new DynamicParameters();
-            p.Add("UserID", admin.Adminid, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UserID", admin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.InsertAdmin", p, commandType: CommandType.StoredProcedure);
         }
@@ -56,7 +56,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("IDD", admin.Adminid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("UserID", admin.UserId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UserID", admin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.UpdateAdmin", p, commandType: CommandType.StoredProcedure);
         }

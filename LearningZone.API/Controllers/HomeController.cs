@@ -32,18 +32,20 @@ namespace LearningZone.API.Controllers
             return _homeService.GetHomeInformationById(id);
         }
         [HttpPost]
-        
+        [Route("CreateHomePage")]
         public void CreateHomeInformation(FinalHomepage finalHomepage)
         {
             _homeService.CreateHomeInformation(finalHomepage);
         }
         [HttpPut]
+        [Route("UpdateHomePage")]
         public void UpdateHomeInformation(FinalHomepage finalHomepage)
         {
             _homeService.UpdateHomeInformation(finalHomepage);
         }
 
         [HttpDelete]
+        [Route("DeleteHomePage")]
         public void DeleteHomeInformation(int id)
         {
             _homeService.DeleteHomeInformation(id);

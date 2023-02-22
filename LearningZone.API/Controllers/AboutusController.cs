@@ -35,7 +35,7 @@ namespace LearningZone.API.Controllers
             return aboutusService.GetAboutById(id);
         }
         [HttpGet]
-        [Route("gatAll")]
+        [Route("gatAllAbouts")]
         public List<FinalAboutu> GetAllAbouts()
         {
             return aboutusService.GetAllAbouts();

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
@@ -12,8 +13,8 @@ namespace LearningZone.Infra.Repository
 {
     public class TestimonialRepository : ITestimonialRepository
     {
-        private readonly DbContext _dbContext;
-        public TestimonialRepository(DbContext  dbContext)
+        private readonly IDbContext _dbContext;
+        public TestimonialRepository(IDbContext  dbContext)
         {
             this._dbContext = dbContext;
         }
@@ -21,8 +22,8 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("message", finalTestimonial.Testimonialmessage, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("status", finalTestimonial.Testimonialstatus, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("USERID", finalTestimonial.UserId, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("status", finalTestimonial.Testimonialstatus, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("USERID", finalTestimonial.User_Id, dbType: DbType.Int32, ParameterDirection.Input);
             
 
             var result = _dbContext.Connection.Execute("Final_Testimonial_Package.CreateTestimonial", p, commandType: CommandType.StoredProcedure);
@@ -56,8 +57,8 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("id", finalTestimonial.Testimonialid, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("message", finalTestimonial.Testimonialmessage, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("status", finalTestimonial.Testimonialstatus, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("USERID", finalTestimonial.UserId, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("status", finalTestimonial.Testimonialstatus, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("USERID", finalTestimonial.User_Id, dbType: DbType.Int32, ParameterDirection.Input);
 
 
             var result = _dbContext.Connection.Execute("Final_Testimonial_Package.UpdateTestimonial", p, commandType: CommandType.StoredProcedure);

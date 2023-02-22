@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
@@ -12,15 +13,15 @@ namespace LearningZone.Infra.Repository
 {
     public class CertificateRepository : ICertificateRepository
     {
-        private readonly DbContext _dbContext;
-        public CertificateRepository(DbContext _dbContext)
+        private readonly IDbContext _dbContext;
+        public CertificateRepository(IDbContext _dbContext)
         {
             this._dbContext = _dbContext;
         }
         public void CreateCertificate(FinalCertificate finalCertificate)
         {
             var p = new DynamicParameters();
-            p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("tsid", finalCertificate.TSId, dbType: DbType.Int32, ParameterDirection.Input);
            
 
@@ -55,7 +56,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("IDD", finalCertificate.Certificateid, dbType: DbType.Int32, ParameterDirection.Input);
-            p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("tsid", finalCertificate.TSId, dbType: DbType.Int32, ParameterDirection.Input);
 
 
