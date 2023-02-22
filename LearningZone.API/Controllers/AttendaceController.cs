@@ -38,7 +38,7 @@ namespace LearningZone.API.Controllers
             return attendaceService.GetAttendanceByID(id);
         }
         [HttpGet]
-        [Route("gatAll")]
+        [Route("gatAllAttendance")]
         public List<FinalAttendance> GETALLAttendance()
         {
             return attendaceService.GETALLAttendance();

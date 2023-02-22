@@ -18,6 +18,7 @@ namespace LearningZone.API.Controllers
 
         }
         [HttpGet]
+        [Route("GetAllTasks")]
        public List<FinalTask> GetAllTask()
         {
             return _taskService.GetAllTask();
@@ -30,16 +31,19 @@ namespace LearningZone.API.Controllers
             return _taskService.GetTaskById(id);
         }
         [HttpPost]
+        [Route("CreateNewTask")]
         public void CreateTask(FinalTask finalTask)
         {
             _taskService.CreateTask(finalTask);
         }
         [HttpPut]
+        [Route("UpdateTask")]
         public void UpdateTask(FinalTask finalTask)
         {
             _taskService.UpdateTask(finalTask);
         }
         [HttpDelete]
+        [Route("DeleteTask")]
        public void DeleteTask(int id)
         {
             _taskService.DeleteTask(id);

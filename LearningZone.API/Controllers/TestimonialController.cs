@@ -17,6 +17,7 @@ namespace LearningZone.API.Controllers
             this._testimonialService = _testimonialService;
         }
         [HttpGet]
+        [Route("GetAllTestimonials")]
         public List<FinalTestimonial> GetAllTestimonial()
         {
             return _testimonialService.GetAllTestimonial();
@@ -28,17 +29,19 @@ namespace LearningZone.API.Controllers
             return _testimonialService.GetTestimonialById(id);
         }
         [HttpPost]
+        [Route("CreateTestimonial")]
         public void CreateHomeTestimonial(FinalTestimonial finalTestimonial)
         {
             _testimonialService.CreateHomeTestimonial(finalTestimonial);
         }
         [HttpPut]
+        [Route("UpdateTestimonial")]
         public void UpdateTestimonial(FinalTestimonial finalTestimonial)
         {
             _testimonialService.UpdateTestimonial(finalTestimonial);
         }
         [HttpDelete]
-
+        [Route("DeleteTestimonial")]
         public void DeleteTestimonial(int id)
         {
             _testimonialService.DeleteTestimonial(id);

@@ -21,11 +21,11 @@ namespace LearningZone.Infra.Repository
         public void CreateSolution(FinalSolution solution)
         {
             var p = new DynamicParameters();
-            p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("SOL_FILE", solution.Solutionfile, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("SOL_NOTE", solution.Submitionnote, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TS", solution.TSId, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TAS_ID", solution.TaskId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("TS", solution.TSId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TAS_ID", solution.TaskId, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("FINAL_SOLUTION_PACKAGE.CREATE_NEW_SOLUTION", p, commandType: CommandType.StoredProcedure);
         }

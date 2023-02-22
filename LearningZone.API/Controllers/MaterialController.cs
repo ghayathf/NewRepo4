@@ -37,7 +37,7 @@ namespace LearningZone.API.Controllers
             return materialService.GetMaterialByID(id);
         }
         [HttpGet]
-        [Route("gatAll")]
+        [Route("gatAllMaterials")]
         public List<FinalMaterial> GetAllAbouts()
         {
             return materialService.GETALLMaterials();
