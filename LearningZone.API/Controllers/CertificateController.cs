@@ -17,6 +17,7 @@ namespace LearningZone.API.Controllers
             _certificateService = certificateService;
         }
         [HttpGet]
+        [Route("GetAllCertificates")]
         public List<FinalCertificate> GetAllCertificate()
         {
            return _certificateService.GetAllCertificate();
@@ -28,16 +29,19 @@ namespace LearningZone.API.Controllers
             return _certificateService.GetTCertificateById(id);
         }
         [HttpPost]
+        [Route("CreateCertificate")]
        public void CreateCertificate(FinalCertificate finalCertificate)
         {
             _certificateService.CreateCertificate(finalCertificate);
         }
         [HttpPut]
+        [Route("UpdateCertificate")]
         public void UpdateCertificate(FinalCertificate finalCertificate)
         {
             _certificateService.UpdateCertificate(finalCertificate);
         }
         [HttpDelete]
+        [Route("DeleteCertificate")]
         public void DeleteCertificate(int id)
         {
             _certificateService.DeleteCertificate(id);

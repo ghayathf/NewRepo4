@@ -37,7 +37,7 @@ namespace LearningZone.API.Controllers
             return traineeService.GetTraineeByID(id);
         }
         [HttpGet]
-        [Route("gatAll")]
+        [Route("gatAllTrainees")]
         public List<FinalTrainee> GETALLTrainees()
         {
             return traineeService.GETALLTrainees();

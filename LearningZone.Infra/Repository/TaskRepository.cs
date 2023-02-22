@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
@@ -12,9 +13,9 @@ namespace LearningZone.Infra.Repository
 {
     public class TaskRepository : ITaskRepository
     {
-        private readonly DbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public TaskRepository(DbContext dbContext)
+        public TaskRepository(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }
