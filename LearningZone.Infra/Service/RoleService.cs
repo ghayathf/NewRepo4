@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -8,34 +9,34 @@ namespace LearningZone.Infra.Service
 {
     public class RoleService : IRoleService
     {
-        private readonly IRoleService _roleService;
-        public RoleService(IRoleService roleService)
+        private readonly IRoleRepository roleRepository;
+        public RoleService(IRoleRepository roleService)
         {
-            _roleService = roleService;
+           roleRepository = roleService;
         }
         public void CreateRole(FinalRole finalRole)
         {
-            _roleService.CreateRole(finalRole);
+            roleRepository.CreateRole(finalRole);
         }
 
         public void DeleteRole(int id)
         {
-            _roleService.DeleteRole(id);
+            roleRepository.DeleteRole(id);
         }
 
         public List<FinalRole> GetAllRole()
         {
-            return _roleService.GetAllRole();
+            return roleRepository.GetAllRole();
         }
 
         public FinalRole GetTRoleById(int id)
         {
-            return _roleService.GetTRoleById(id);
+            return roleRepository.GetTRoleById(id);
         }
 
         public void UpdateRole(FinalRole finalRole)
         {
-            _roleService.UpdateRole(finalRole);
+            roleRepository.UpdateRole(finalRole);
         }
     }
 }

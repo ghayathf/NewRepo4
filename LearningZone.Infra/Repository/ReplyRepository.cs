@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
@@ -12,8 +13,8 @@ namespace LearningZone.Infra.Repository
 {
     public class ReplyRepository : IReplyRepository
     {
-        private readonly DbContext dbContext;
-        public ReplyRepository(DbContext dbContext)
+        private readonly IDbContext dbContext;
+        public ReplyRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
@@ -12,8 +13,8 @@ namespace LearningZone.Infra.Repository
 {
     public class TestimonialRepository : ITestimonialRepository
     {
-        private readonly DbContext _dbContext;
-        public TestimonialRepository(DbContext  dbContext)
+        private readonly IDbContext _dbContext;
+        public TestimonialRepository(IDbContext  dbContext)
         {
             this._dbContext = dbContext;
         }
