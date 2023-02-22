@@ -9,12 +9,12 @@ namespace LearningZone.Core.Data
     {
         public FinalUser()
         {
-            FinalAdmins = new HashSet<FinalAdmin>();
+            //FinalAdmins = new HashSet<FinalAdmin>();
             FinalComments = new HashSet<FinalComment>();
             FinalReplies = new HashSet<FinalReply>();
             FinalTestimonials = new HashSet<FinalTestimonial>();
-            FinalTrainees = new HashSet<FinalTrainee>();
-            FinalTrainers = new HashSet<FinalTrainer>();
+            //FinalTrainees = new HashSet<FinalTrainee>();
+            //FinalTrainers = new HashSet<FinalTrainer>();
         }
 
         public decimal Userid { get; set; }
@@ -24,14 +24,14 @@ namespace LearningZone.Core.Data
         public string Phonenumber { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public decimal? RoleId { get; set; }
+        public decimal? Role_Id { get; set; }
 
-        public virtual FinalRole Role { get; set; }
-        public virtual ICollection<FinalAdmin> FinalAdmins { get; set; }
+        //public virtual FinalRole Role { get; set; }
+        //public virtual ICollection<FinalAdmin> FinalAdmins { get; set; }
         public virtual ICollection<FinalComment> FinalComments { get; set; }
         public virtual ICollection<FinalReply> FinalReplies { get; set; }
         public virtual ICollection<FinalTestimonial> FinalTestimonials { get; set; }
-        public virtual ICollection<FinalTrainee> FinalTrainees { get; set; }
-        public virtual ICollection<FinalTrainer> FinalTrainers { get; set; }
+        //public virtual ICollection<FinalTrainee> FinalTrainees { get; set; }
+        //public virtual ICollection<FinalTrainer> FinalTrainers { get; set; }
     }
 }

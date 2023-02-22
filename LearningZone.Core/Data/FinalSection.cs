@@ -20,8 +20,8 @@ namespace LearningZone.Core.Data
         public DateTime? Enddate { get; set; }
         public string Meetingurl { get; set; }
         public decimal? Sectioncapacity { get; set; }
-        public decimal? CourseId { get; set; }
-        public decimal? TrainerId { get; set; }
+        public decimal? Course_Id { get; set; }
+        public decimal? Trainer_Id { get; set; }
 
         public virtual FinalCourse Course { get; set; }
         public virtual FinalTrainer Trainer { get; set; }

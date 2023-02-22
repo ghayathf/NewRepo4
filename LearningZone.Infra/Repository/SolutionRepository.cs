@@ -24,8 +24,8 @@ namespace LearningZone.Infra.Repository
             p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("SOL_FILE", solution.Solutionfile, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("SOL_NOTE", solution.Submitionnote, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TS", solution.TSId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TAS_ID", solution.TaskId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TS", solution.T_S_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TAS_ID", solution.Task_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("FINAL_SOLUTION_PACKAGE.CREATE_NEW_SOLUTION", p, commandType: CommandType.StoredProcedure);
         }
@@ -60,6 +60,11 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("SOL_ID", solution.Solutionid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.Double, direction: ParameterDirection.Input);
+            p.Add("SOL_FILE", solution.Solutionfile, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("SOL_NOTE", solution.Submitionnote, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("TS", solution.T_S_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TAS_ID", solution.Task_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("FINAL_SOLUTION_PACKAGE.EDIT_SOLUTION_INFO", p, commandType: CommandType.StoredProcedure);
         }

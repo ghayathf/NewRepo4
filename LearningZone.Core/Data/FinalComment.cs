@@ -15,7 +15,7 @@ namespace LearningZone.Core.Data
         public decimal Commentid { get; set; }
         public string Commentmessage { get; set; }
         public DateTime? Datepublished { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? User_Id { get; set; }
 
         public virtual FinalUser User { get; set; }
         public virtual ICollection<FinalReply> FinalReplies { get; set; }

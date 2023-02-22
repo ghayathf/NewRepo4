@@ -26,8 +26,8 @@ namespace LearningZone.Infra.Repository
             p.Add("TType", finalTask.Tasktype, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TStartTime", finalTask.Starttime, dbType: DbType.DateTime, ParameterDirection.Input);
             p.Add("TEndTime", finalTask.Endtime, dbType: DbType.DateTime, ParameterDirection.Input);
-            p.Add("TWeight", finalTask.Weight, dbType: DbType.Decimal, ParameterDirection.Input);
-            p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Decimal, ParameterDirection.Input);
+            p.Add("TWeight", finalTask.Weight, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("TFile", finalTask.Taskfile, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TNote", finalTask.Tasknote, dbType: DbType.String, ParameterDirection.Input);
 
@@ -64,8 +64,8 @@ namespace LearningZone.Infra.Repository
             p.Add("TType", finalTask.Tasktype, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TStartTime", finalTask.Starttime, dbType: DbType.DateTime, ParameterDirection.Input);
             p.Add("TEndTime", finalTask.Endtime, dbType: DbType.DateTime, ParameterDirection.Input);
-            p.Add("TWeight", finalTask.Weight, dbType: DbType.Decimal, ParameterDirection.Input);
-            p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Decimal, ParameterDirection.Input);
+            p.Add("TWeight", finalTask.Weight, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("TFile", finalTask.Taskfile, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TNote", finalTask.Tasknote, dbType: DbType.String, ParameterDirection.Input);
 

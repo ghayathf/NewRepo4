@@ -10,7 +10,7 @@ namespace LearningZone.Core.Data
         public decimal Materialid { get; set; }
         public DateTime? Dateuploaded { get; set; }
         public string Materialname { get; set; }
-        public decimal? SectionId { get; set; }
+        public decimal? Section_Id { get; set; }
 
         public virtual FinalSection Section { get; set; }
     }

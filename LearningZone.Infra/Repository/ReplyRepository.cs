@@ -24,8 +24,8 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("RMessage", finalReply.Replymessage, DbType.String, direction: ParameterDirection.Input);
             p.Add("RDatePublished", finalReply.Datepublished, DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("RUser_ID", finalReply.UserId, DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("RComment_ID", finalReply.CommentId, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RUser_ID", finalReply.User_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RComment_ID", finalReply.Comment_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Reply_Package.CREATEReply", p, commandType: CommandType.StoredProcedure);
         }
@@ -59,8 +59,8 @@ namespace LearningZone.Infra.Repository
             p.Add("IDD", finalReply.Replyid, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RMessage", finalReply.Replymessage, DbType.String, direction: ParameterDirection.Input);
             p.Add("RDatePublished", finalReply.Datepublished, DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("RUser_ID", finalReply.UserId, DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("RComment_ID", finalReply.CommentId, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RUser_ID", finalReply.User_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RComment_ID", finalReply.Comment_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Reply_Package.UpdateReply", p, commandType: CommandType.StoredProcedure);
         }

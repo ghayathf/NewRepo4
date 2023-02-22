@@ -24,7 +24,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TSalary", trainer.Salary, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("TPosition", trainer.Trainerposition, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TQualification", trainer.Qualification, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TUser_ID", trainer.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TUser_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Trainer_Package.CREATETrainer", p, commandType: CommandType.StoredProcedure);
         }
@@ -62,7 +62,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TSalary", trainer.Salary, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("TPosition", trainer.Trainerposition, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TQualification", trainer.Qualification, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TUser_ID", trainer.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TUser_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             var result = dbContext.Connection.Execute("Final_Trainer_Package.UpdateTrainer", p, commandType: CommandType.StoredProcedure);
         }

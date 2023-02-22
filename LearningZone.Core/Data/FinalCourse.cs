@@ -17,7 +17,7 @@ namespace LearningZone.Core.Data
         public string Coursedescription { get; set; }
         public string Courseimage { get; set; }
         public decimal? Courselevel { get; set; }
-        public decimal? CategoryId { get; set; }
+        public decimal? Category_Id { get; set; }
 
         public virtual FinalCategory Category { get; set; }
         public virtual ICollection<FinalSection> FinalSections { get; set; }
