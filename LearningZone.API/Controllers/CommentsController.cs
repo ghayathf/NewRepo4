@@ -4,6 +4,7 @@ using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LearningZone.API.Controllers
 {
@@ -30,7 +31,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllComments")]
-        public List<FinalComment> GetAllComments()
+        public Task<List<FinalComment>> GetAllComments()
         {
             return commentService.GetAllComments();
         }

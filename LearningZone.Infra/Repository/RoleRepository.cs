@@ -3,11 +3,13 @@ using LearningZone.Core.Common;
 using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -36,10 +38,30 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_Role_PACKAGE.DELETE_ROLE", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalRole> GetAllRole()
+        public async Task<List<FinalRole>> GetAllRole()
         {
-            IEnumerable<FinalRole> result = _dbContext.Connection.Query<FinalRole>("Final_Role_PACKAGE.GET_ALL_ROLES_INFO", commandType: CommandType.StoredProcedure);
-            return result.ToList();
+            var p = new DynamicParameters();
+            var result = await _dbContext.Connection.QueryAsync<FinalRole, FinalUser,
+            FinalRole>("Final_Role_PACKAGE.GET_ALL_ROLES_INFO",
+            (role, user) =>
+            {
+                role.FinalUsers.Add(user);
+                return role;
+            },
+            splitOn: "RoleId , UserId"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
+
+
+            var results = result.GroupBy(p => p.Roleid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalUsers = g.Select(p => p.FinalUsers.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalRole GetTRoleById(int id)

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -35,11 +36,30 @@ namespace LearningZone.Infra.Repository
             dbContext.Connection.Execute("Final_Comment_Package.DELETEComment", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalComment> GetAllComments()
+        public async Task<List<FinalComment>> GetAllComments()
         {
-            IEnumerable<FinalComment> comments = dbContext.Connection.Query<FinalComment>("Final_Comment_Package.GETALLComments"
-                , commandType: CommandType.StoredProcedure);
-            return comments.ToList();
+            var p = new DynamicParameters();
+            var result = await dbContext.Connection.QueryAsync<FinalComment, FinalReply,
+            FinalComment>("Final_Comment_Package.GETALLComments",
+            (comment, reply) =>
+            {
+                comment.FinalReplies.Add(reply);
+                return comment;
+            },
+            splitOn: "CommentId , ReplyId"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
+
+
+            var results = result.GroupBy(p => p.Commentid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalReplies = g.Select(p => p.FinalReplies.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalComment GetCommentById(int id)

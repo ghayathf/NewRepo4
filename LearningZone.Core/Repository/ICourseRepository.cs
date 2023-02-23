@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Repository
 {
     public interface ICourseRepository
     {
-        List<FinalCourse> GetAllCourses();
+        Task<List<FinalCourse>> GetAllCourses();
         FinalCourse GetCourseById(int id);
         void CreateCourse(FinalCourse finalCourse);
         void UpdateCourse(FinalCourse finalCourse);

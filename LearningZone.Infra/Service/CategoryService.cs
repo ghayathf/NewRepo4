@@ -4,6 +4,7 @@ using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Service
 {
@@ -24,7 +25,7 @@ namespace LearningZone.Infra.Service
             categoryRepository.DeleteCategory(id);
         }
 
-        public List<FinalCategory> GetAllCategories()
+        public Task<List<FinalCategory>> GetAllCategories()
         {
             return categoryRepository.GetAllCategories();
         }
