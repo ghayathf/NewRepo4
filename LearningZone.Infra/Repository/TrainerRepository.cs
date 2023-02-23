@@ -48,10 +48,8 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("IDD", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-
             IEnumerable<FinalTrainer> result = dbContext.Connection.Query<FinalTrainer>("Final_Trainer_Package.GetTrainerByID",
                 p, commandType: CommandType.StoredProcedure);
-
             return result.FirstOrDefault();
         }
 
