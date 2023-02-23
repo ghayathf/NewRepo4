@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -36,10 +37,25 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Execute("Final_Trainer_Package.DELETETrainer", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalTrainer> GetAllTrainers()
+        public async Task< List<FinalTrainer>> GetAllTrainers()
         {
-            IEnumerable<FinalTrainer> result = dbContext.Connection.Query<FinalTrainer>("Final_Trainer_Package.GETALLTrainers",
-               commandType: CommandType.StoredProcedure);
+            var result = await dbContext.Connection.QueryAsync<FinalTrainer, FinalSection, FinalTrainer>("Final_Trainer_Package.GETALLTrainers", (Trainer, Section) =>
+            {
+                Trainer.FinalSections.Add(Section);
+                return Trainer;
+            },
+                splitOn: "Trainer_Id,Sectionid",
+                param:null,
+                commandType:CommandType.StoredProcedure
+            );
+
+            var results = result.GroupBy(p => p.Trainerid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalSections = g.Select(p => p.FinalSections.Single()).ToList();
+
+                return groupedPost;
+            });
 
             return result.ToList();
         }

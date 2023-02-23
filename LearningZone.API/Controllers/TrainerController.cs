@@ -39,9 +39,9 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllTrainers")]
-        public List<FinalTrainer> GetAllTrainers()
+        public async Task <List<FinalTrainer>> GetAllTrainers()
         {
-            return trainerService.GetAllTrainers();
+            return await trainerService.GetAllTrainers();
         }
         [HttpPut]
         [Route("UpdateTrainer")]

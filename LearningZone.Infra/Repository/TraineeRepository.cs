@@ -33,7 +33,7 @@ namespace LearningZone.Infra.Repository
                 return Trainee;
             },
 
-            splitOn: "Traineeid",
+            splitOn: "Trainee_Id,Tsid",
              param: null,
             commandType: CommandType.StoredProcedure
 

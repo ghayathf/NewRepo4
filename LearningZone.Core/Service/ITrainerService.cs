@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Service
 {
     public interface ITrainerService
     {
-        List<FinalTrainer> GetAllTrainers();
+       Task <List<FinalTrainer>> GetAllTrainers();
         FinalTrainer GetTrainerByID(int id);
         void CreateTrainer(FinalTrainer trainer);
         void UpdateTrainer(FinalTrainer trainer);
