@@ -4,6 +4,7 @@ using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Service
 {
@@ -26,9 +27,9 @@ namespace LearningZone.Infra.Service
             traineeSectionRepository.DELETETraineeSection(id);
         }
 
-        public List<FinalTraineesection> GETALLTraineeSections()
+        public async Task<List<FinalTraineesection>> GETALLTraineeSections()
         {
-            return traineeSectionRepository.GETALLTraineeSections();
+            return await traineeSectionRepository.GETALLTraineeSections();
         }
 
         public FinalTraineesection GetTraineeSectionByID(int id)

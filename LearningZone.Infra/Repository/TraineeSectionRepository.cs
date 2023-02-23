@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -36,12 +37,32 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Execute("Final_TraineeSection_Package.DELETETraineeSection", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalTraineesection> GETALLTraineeSections()
+        public async Task<List<FinalTraineesection>> GETALLTraineeSections()
         {
-            IEnumerable<FinalTraineesection> result = dbContext.Connection.Query<FinalTraineesection>("Final_TraineeSection_Package.GETALLTraineeSections",
-               commandType: CommandType.StoredProcedure);
+            var p = new DynamicParameters();
+            var result = await dbContext.Connection.QueryAsync<FinalTraineesection, FinalCertificate,FinalSolution,
+            FinalTraineesection>("Final_TraineeSection_Package.GETALLTraineeSections",
+            (TS, certificate, solution) =>
+            {
+                TS.FinalCertificates.Add(certificate);
+                TS.FinalSolutions.Add(solution);
+                return TS;
+            },
+            splitOn: "Tsid,Certificateid,Solutionid"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
 
-            return result.ToList();
+
+            var results = result.GroupBy(p => p.Tsid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalCertificates = g.Select(p => p.FinalCertificates.Single()).ToList();
+                groupedPost.FinalSolutions = g.Select(p => p.FinalSolutions.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalTraineesection GetTraineeSectionByID(int id)
