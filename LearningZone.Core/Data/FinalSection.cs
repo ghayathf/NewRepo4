@@ -23,8 +23,8 @@ namespace LearningZone.Core.Data
         public decimal? Course_Id { get; set; }
         public decimal? Trainer_Id { get; set; }
 
-        public virtual FinalCourse Course { get; set; }
-        public virtual FinalTrainer Trainer { get; set; }
+        //public virtual FinalCourse Course { get; set; }
+       // public virtual FinalTrainer Trainer { get; set; }
         public virtual ICollection<FinalMaterial> FinalMaterials { get; set; }
         public virtual ICollection<FinalTraineesection> FinalTraineesections { get; set; }
     }

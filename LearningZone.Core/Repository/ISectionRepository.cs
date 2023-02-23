@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Repository
 {
     public interface ISectionRepository
     {
-        List<FinalSection> GetAllSections();
+        Task<List<FinalSection>> GetAllSections();
         FinalSection GetSectionByID(int id);
         void CreateSection(FinalSection section);
         void UpdateSection(FinalSection section);

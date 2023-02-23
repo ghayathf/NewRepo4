@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -40,13 +41,33 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Execute("Final_Section_Package.DeleteSection", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalSection> GetAllSections()
+        public async Task<List<FinalSection>> GetAllSections()
         {
-            IEnumerable<FinalSection> result = dbContext.Connection.Query<FinalSection>("Final_Section_Package.GetAllSections",
-              commandType: CommandType.StoredProcedure);
+                var p = new DynamicParameters();
+                var result = await dbContext.Connection.QueryAsync<FinalSection, FinalMaterial, FinalTraineesection,
+                FinalSection>("Final_Section_Package.GetAllSections",
+                (section, Material, ts) =>
+                {
+                    section.FinalMaterials.Add(Material);
+                    section.FinalTraineesections.Add(ts);
+                    return section;
+                },
+                splitOn: "Sectionid,Materialid,Tsid"
+                ,
+                param: null,
+                commandType: CommandType.StoredProcedure
+                );
 
-            return result.ToList();
-        }
+
+                var results = result.GroupBy(p => p.Sectionid).Select(g =>
+                {
+                    var groupedPost = g.First();
+                    groupedPost.FinalMaterials = g.Select(p => p.FinalMaterials.Single()).ToList();
+                    groupedPost.FinalTraineesections = g.Select(p => p.FinalTraineesections.Single()).ToList();
+                    return groupedPost;
+                });
+                return results.ToList();
+            }
 
         public FinalSection GetSectionByID(int id)
         {

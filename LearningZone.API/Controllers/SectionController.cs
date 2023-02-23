@@ -39,9 +39,9 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllSections")]
-        public List<FinalSection> GetAllSections()
+        public async Task<List<FinalSection>> GetAllSections()
         {
-            return sectionService.GetAllSections();
+            return await sectionService.GetAllSections();
         }
         [HttpPut]
         [Route("UpdateSection")]
