@@ -92,6 +92,8 @@ namespace LearningZone.API
             services.AddScoped<ICertificateService, CertificateService>();
             services.AddScoped<ISectionRepository, SectionRepository>();
             services.AddScoped<ISectionService, SectionService>();
+            services.AddScoped<ITakeAttendanceRepository, TakeAttendanceRepository>();
+            services.AddScoped<ITakeAttendanceService, TakeAttendanceService>();
 
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

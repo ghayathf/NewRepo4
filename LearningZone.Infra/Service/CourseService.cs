@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Service
 {
@@ -25,7 +26,7 @@ namespace LearningZone.Infra.Service
             courseRepository.DeleteCourse(id);
         }
 
-        public List<FinalCourse> GetAllCourses()
+        public Task<List<FinalCourse>> GetAllCourses()
         {
             return courseRepository.GetAllCourses();
         }

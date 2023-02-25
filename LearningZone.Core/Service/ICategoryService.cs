@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Service
 {
     public interface ICategoryService
     {
-        List<FinalCategory> GetAllCategories();
+        Task<List<FinalCategory>> GetAllCategories();
         FinalCategory GetCategoryById(int id);
         void CreateCategory(FinalCategory finalCategory);
         void UpdateCategory(FinalCategory finalCategory);

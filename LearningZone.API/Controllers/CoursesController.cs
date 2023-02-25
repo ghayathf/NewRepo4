@@ -4,6 +4,7 @@ using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LearningZone.API.Controllers
 {
@@ -30,7 +31,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllCourses")]
-        public List<FinalCourse> GetAllCourses()
+        public Task<List<FinalCourse>> GetAllCourses()
         {
             return courseService.GetAllCourses();
         }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -32,11 +33,30 @@ namespace LearningZone.Infra.Repository
             dbContext.Connection.Execute("Final_category_Package.DeleteCategory", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalCategory> GetAllCategories()
+        public async Task<List<FinalCategory>> GetAllCategories()
         {
-            IEnumerable<FinalCategory> categories = dbContext.Connection.Query<FinalCategory>("Final_category_Package.GetAllCategory"
-                , commandType: CommandType.StoredProcedure);
-            return categories.ToList();
+            var p = new DynamicParameters();
+            var result = await dbContext.Connection.QueryAsync<FinalCategory, FinalCourse,
+            FinalCategory>("Final_category_Package.GetAllCategory",
+            (category, course) =>
+            {
+                category.FinalCourses.Add(course);
+                return category;
+            },
+            splitOn: "Categoryid , Courseid"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
+
+
+            var results = result.GroupBy(p => p.Categoryid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalCourses = g.Select(p => p.FinalCourses.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalCategory GetCategoryById(int id)

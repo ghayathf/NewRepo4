@@ -22,7 +22,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.Int32, ParameterDirection.Input);
-            p.Add("tsid", finalCertificate.TSId, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("tsid", finalCertificate.T_S_Id, dbType: DbType.Int32, ParameterDirection.Input);
            
 
 
@@ -57,7 +57,7 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("IDD", finalCertificate.Certificateid, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("typee_cre", finalCertificate.Certificatetype, dbType: DbType.Int32, ParameterDirection.Input);
-            p.Add("tsid", finalCertificate.TSId, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("tsid", finalCertificate.T_S_Id, dbType: DbType.Int32, ParameterDirection.Input);
 
 
 

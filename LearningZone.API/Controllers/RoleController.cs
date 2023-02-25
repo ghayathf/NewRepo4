@@ -3,6 +3,7 @@ using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LearningZone.API.Controllers
 {
@@ -18,7 +19,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllRoles")]
-        public List<FinalRole> GetAllRole()
+        public Task<List<FinalRole>> GetAllRole()
         {
             return _roleService.GetAllRole();
         }

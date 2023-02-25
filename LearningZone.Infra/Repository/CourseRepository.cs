@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -37,11 +38,30 @@ namespace LearningZone.Infra.Repository
             dbContext.Connection.Execute("Final_Course_Package.DELETECourse", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalCourse> GetAllCourses()
+        public async Task<List<FinalCourse>> GetAllCourses()
         {
-            IEnumerable<FinalCourse> courses = dbContext.Connection.Query<FinalCourse>("Final_Course_Package.GETALLCourses"
-                , commandType: CommandType.StoredProcedure);
-            return courses.ToList();
+            var p = new DynamicParameters();
+            var result = await dbContext.Connection.QueryAsync<FinalCourse, FinalSection,
+            FinalCourse>("Final_Course_Package.GETALLCourses",
+            (course, section) =>
+            {
+                course.FinalSections.Add(section);
+                return course;
+            },
+            splitOn: "CourseId , SectionId"
+            ,
+            param: null,
+            commandType: CommandType.StoredProcedure
+            );
+
+
+            var results = result.GroupBy(p => p.Courseid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalSections = g.Select(p => p.FinalSections.Single()).ToList();
+                return groupedPost;
+            });
+            return results.ToList();
         }
 
         public FinalCourse GetCourseById(int id)

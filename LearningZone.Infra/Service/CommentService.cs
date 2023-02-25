@@ -4,6 +4,7 @@ using LearningZone.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Service
 {
@@ -25,7 +26,7 @@ namespace LearningZone.Infra.Service
             commentRepository.DeleteComment(id);
         }
 
-        public List<FinalComment> GetAllComments()
+        public Task<List<FinalComment>> GetAllComments()
         {
             return commentRepository.GetAllComments();
         }

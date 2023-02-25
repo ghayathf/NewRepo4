@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Repository
 {
     public interface ICommentRepository
     {
-        List<FinalComment> GetAllComments();
+        Task<List<FinalComment>> GetAllComments();
         FinalComment GetCommentById(int id);
         void CreateComment(FinalComment finalComment);
         void UpdateComment(FinalComment finalComment);
