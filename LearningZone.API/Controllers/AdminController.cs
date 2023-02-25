@@ -49,6 +49,16 @@ namespace LearningZone.API.Controllers
         {
             adminService.UpdateAdmin(admin);
         }
+
+
+
+
+
+
+
+
+
+
         [HttpPut]
         [Route("HandleRegistration")]
         public void HandleRegistration(FinalTrainee trainee)
