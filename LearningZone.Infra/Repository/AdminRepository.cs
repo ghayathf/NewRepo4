@@ -68,5 +68,12 @@ namespace LearningZone.Infra.Repository
             p.Add("Register_Status", trainee.Registerstatus, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.HandleRegistration", p, commandType: CommandType.StoredProcedure);
         }
+
+        public void GenerateCertificate(int type)
+        {
+            var p = new DynamicParameters();
+            p.Add("Typee", type, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.Generate_Certificate", p, commandType: CommandType.StoredProcedure);
+        }
     }
  }
