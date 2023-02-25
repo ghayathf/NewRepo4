@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Core.Service
 {
     public interface ITaskService
     {
-        List<FinalTask> GetAllTask();
+        Task <List<FinalTask>> GetAllTask();
         FinalTask GetTaskById(int id);
         void CreateTask(FinalTask finalTask);
         void UpdateTask(FinalTask finalTask);
