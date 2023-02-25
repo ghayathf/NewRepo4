@@ -13,5 +13,6 @@ namespace LearningZone.Core.Repository
         void UpdateAdmin(FinalAdmin admin);
         void DeleteAdmin(int id);
         void HandleRegistration(FinalTrainee trainee);
+        void GenerateCertificate(int type);
     }
 }

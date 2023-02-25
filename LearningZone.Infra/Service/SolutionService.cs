@@ -26,6 +26,11 @@ namespace LearningZone.Infra.Service
             solutionRepository.DeleteSolution(id);
         }
 
+        public void EnterSolutionMark(int id, double mark)
+        {
+            solutionRepository.EnterSolutionMark(id, mark);
+        }
+
         public List<FinalSolution> GetAllSolutions()
         {
             return solutionRepository.GetAllSolutions();

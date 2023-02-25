@@ -49,5 +49,11 @@ namespace LearningZone.API.Controllers
         {
             solutionService.UpdateSolution(solution);
         }
+        [HttpPut]
+        [Route("EnterSolutionMark/{id}/{mark}")]
+        public void EnterSolutionMark(int id, double mark)
+        {
+            solutionService.EnterSolutionMark(id, mark);
+        }
     }
 }

@@ -26,6 +26,11 @@ namespace LearningZone.Infra.Service
             adminRepository.DeleteAdmin(id);
         }
 
+        public void GenerateCertificate(int type)
+        {
+            adminRepository.GenerateCertificate(type);
+        }
+
         public FinalAdmin GetAdminByID(int id)
         {
             return adminRepository.GetAdminByID(id);
