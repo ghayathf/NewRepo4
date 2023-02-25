@@ -12,5 +12,6 @@ namespace LearningZone.Core.Service
         void CreateAdmin(FinalAdmin admin);
         void UpdateAdmin(FinalAdmin admin);
         void DeleteAdmin(int id);
+        void HandleRegistration(FinalTrainee trainee);
     }
 }

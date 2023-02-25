@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace LearningZone.Core.Repository
         void InsertTrainee(FinalTrainee trainee);
         void UpdateTrainee(FinalTrainee trainee);
         void DELETETrainee(int IDD) ;
+        List<SearchTrainee> SerchTrainees(SearchTrainee trainee);
     }
 }
 //string Address , string Major ,string University ,string TraineeField , int RegisterStatus  ,int  User_ID 

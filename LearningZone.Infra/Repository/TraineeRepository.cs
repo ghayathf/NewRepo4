@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -66,9 +67,22 @@ namespace LearningZone.Infra.Repository
             p.Add("Major", trainee.Major, DbType.String, direction: ParameterDirection.Input);
             p.Add("University", trainee.University, DbType.String, direction: ParameterDirection.Input);
             p.Add("TraineeField", trainee.Traineefield, DbType.String, direction: ParameterDirection.Input);
-            p.Add("RegisterStatus", trainee.Registerstatus, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RegisterStatus",-1 /*trainee.Registerstatus*/, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("User_ID", trainee.User_Id, DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Trainee_PACKAGE.InsertTrainee", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
+        {
+            var p = new DynamicParameters();
+            p.Add("FName", trainee.Address, DbType.String, direction: ParameterDirection.Input);
+            p.Add("LName", trainee.Address, DbType.String, direction: ParameterDirection.Input);
+            p.Add("Address_", trainee.Address, DbType.String, direction: ParameterDirection.Input);
+            p.Add("Major_", trainee.Major, DbType.String, direction: ParameterDirection.Input);
+            p.Add("University_", trainee.University, DbType.String, direction: ParameterDirection.Input);
+            p.Add("Trainee_Field", trainee.Traineefield, DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<SearchTrainee> result = dbContext.Connection.Query<SearchTrainee>("Final_Trainee_PACKAGE.SearchTrainee", p, commandType: System.Data.CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public void UpdateTrainee(FinalTrainee trainee)

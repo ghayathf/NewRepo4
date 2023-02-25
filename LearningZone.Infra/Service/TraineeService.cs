@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -33,6 +34,11 @@ namespace LearningZone.Infra.Service
         public void InsertTrainee(FinalTrainee trainee)
         {
             traineeRepository.InsertTrainee(trainee);
+        }
+
+        public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
+        {
+           return traineeRepository.SerchTrainees(trainee);
         }
 
         public void UpdateTrainee(FinalTrainee trainee)

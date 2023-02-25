@@ -60,5 +60,13 @@ namespace LearningZone.Infra.Repository
 
             var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.UpdateAdmin", p, commandType: CommandType.StoredProcedure);
         }
+
+        public void HandleRegistration(FinalTrainee trainee)
+        {
+            var p = new DynamicParameters();
+            p.Add("IDD", trainee.Traineeid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Register_Status", trainee.Registerstatus, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.HandleRegistration", p, commandType: CommandType.StoredProcedure);
+        }
     }
  }

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,12 @@ namespace LearningZone.API.Controllers
         public void UpdateAttendace(FinalTrainee trainee)
         {
             traineeService.UpdateTrainee(trainee);
+        }
+        [HttpPost]
+        [Route("SerchTrainees")]
+        public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
+        {
+            return traineeService.SerchTrainees(trainee);
         }
     }
 }

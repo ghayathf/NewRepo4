@@ -36,6 +36,11 @@ namespace LearningZone.Infra.Service
             return adminRepository.GetAllAdmins();
         }
 
+        public void HandleRegistration(FinalTrainee trainee)
+        {
+            adminRepository.HandleRegistration( trainee);
+        }
+
         public void UpdateAdmin(FinalAdmin admin)
         {
             adminRepository.UpdateAdmin(admin);

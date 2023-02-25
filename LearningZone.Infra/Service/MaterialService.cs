@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -33,6 +34,11 @@ namespace LearningZone.Infra.Service
         public FinalMaterial GetMaterialByID(int IDD)
         {
            return materialRepository.GetMaterialByID(IDD);
+        }
+
+        public List<FinalMaterial> SearchMaterials(SearchMaterial material)
+        {
+           return materialRepository.SearchMaterials(material);
         }
 
         public void UpdateMaterial(FinalMaterial material)

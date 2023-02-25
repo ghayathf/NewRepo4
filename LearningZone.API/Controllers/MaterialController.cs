@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,12 @@ namespace LearningZone.API.Controllers
         public void UpdateAbout(FinalMaterial material)
         {
             materialService.UpdateMaterial(material);
+        }
+        [HttpPost]
+        [Route("SearchMaterials")]
+        public List<FinalMaterial> SearchMaterials([FromBody]SearchMaterial material)
+        {
+            return materialService.SearchMaterials(material);
         }
     }
 }

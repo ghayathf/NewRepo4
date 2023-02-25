@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,16 @@ namespace LearningZone.Infra.Repository
             p.Add("IDD", IDD, dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Input);
             IEnumerable<FinalMaterial> result = dbContext.Connection.Query<FinalMaterial>("Final_Material_Package.GetMaterialByID", p, commandType: System.Data.CommandType.StoredProcedure);
             return result.FirstOrDefault();
+        }
+
+        public List<FinalMaterial> SearchMaterials(SearchMaterial material)
+        {
+            var p = new DynamicParameters();
+            p.Add("MName", material.MaterialName, dbType: System.Data.DbType.String, direction: System.Data.ParameterDirection.Input);
+            p.Add("DateFrom", material.DateFrom, dbType: System.Data.DbType.DateTime, direction: System.Data.ParameterDirection.Input);
+            p.Add("DateTo", material.DateTo, dbType: System.Data.DbType.DateTime, direction: System.Data.ParameterDirection.Input);
+            IEnumerable<FinalMaterial> result = dbContext.Connection.Query<FinalMaterial>("Final_Material_Package.SearchMaterial", p, commandType: System.Data.CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public void UpdateMaterial(FinalMaterial material)
