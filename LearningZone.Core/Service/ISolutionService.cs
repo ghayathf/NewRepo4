@@ -12,5 +12,6 @@ namespace LearningZone.Core.Service
         void CreateSolution(FinalSolution solution);
         void UpdateSolution(FinalSolution solution);
         void DeleteSolution(int id);
+        void EnterSolutionMark(int id, double mark);
     }
 }

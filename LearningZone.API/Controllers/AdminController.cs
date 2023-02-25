@@ -49,5 +49,11 @@ namespace LearningZone.API.Controllers
         {
             adminService.UpdateAdmin(admin);
         }
+        [HttpPost]
+        [Route("GenerateCertificate/{type}")]
+        public void GenerateCertificate(int type)
+        {
+            adminService.GenerateCertificate(type);
+        }
     }
 }

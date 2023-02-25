@@ -21,7 +21,7 @@ namespace LearningZone.Infra.Repository
         public void CREATETraineeSection(FinalTraineesection traineesection)
         {
             var p = new DynamicParameters();
-            p.Add("TSMark", traineesection.Totalmark, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TSMark", 0, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TSAttendance", traineesection.Totalattendance, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TSStatus", traineesection.T_S_Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TID",traineesection.Trainee_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);

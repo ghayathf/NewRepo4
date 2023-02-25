@@ -33,12 +33,11 @@ namespace LearningZone.Infra.Repository
                 return Trainee;
             },
 
-            splitOn: "Trainee_Id,Tsid",
+            splitOn: "Traineeid,Tsid",
              param: null,
             commandType: CommandType.StoredProcedure
-
-
             );
+
             var results = result.GroupBy(p => p.Traineeid).Select(g =>
             {
                 var groupedPost = g.First();

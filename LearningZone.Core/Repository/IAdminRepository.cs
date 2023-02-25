@@ -12,5 +12,6 @@ namespace LearningZone.Core.Repository
         void CreateAdmin(FinalAdmin admin);
         void UpdateAdmin(FinalAdmin admin);
         void DeleteAdmin(int id);
+        void GenerateCertificate(int type);
     }
 }

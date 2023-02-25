@@ -21,7 +21,7 @@ namespace LearningZone.Infra.Repository
         public void CreateSolution(FinalSolution solution)
         {
             var p = new DynamicParameters();
-            p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.Double, direction: ParameterDirection.Input);
+            p.Add("SOL_MARK", 0, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("SOL_FILE", solution.Solutionfile, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("SOL_NOTE", solution.Submitionnote, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TS", solution.T_S_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
@@ -35,6 +35,15 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("IDD", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("FINAL_SOLUTION_PACKAGE.DELETE_SOLUTION", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void EnterSolutionMark(int id, double mark)
+        {
+            var p = new DynamicParameters();
+            p.Add("Sol_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Sol_Mark", mark, dbType: DbType.Double, direction: ParameterDirection.Input);
+
+            var result = dbContext.Connection.Execute("FINAL_SOLUTION_PACKAGE.Enter_Solution_Mark", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<FinalSolution> GetAllSolutions()
@@ -60,7 +69,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("SOL_ID", solution.Solutionid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("SOL_MARK", solution.Solutionmark, dbType: DbType.Double, direction: ParameterDirection.Input);
+            p.Add("SOL_MARK", 0, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("SOL_FILE", solution.Solutionfile, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("SOL_NOTE", solution.Submitionnote, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TS", solution.T_S_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
