@@ -3,6 +3,7 @@ using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LearningZone.API.Controllers
 {
@@ -19,9 +20,9 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllTasks")]
-       public List<FinalTask> GetAllTask()
+       public async Task< List<FinalTask>> GetAllTask()
         {
-            return _taskService.GetAllTask();
+            return await _taskService.GetAllTask();
         }
 
         [HttpGet]

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningZone.Infra.Repository
 {
@@ -43,9 +44,27 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_Task_Package.DELETETask", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalTask> GetAllTask()
+        public async Task< List<FinalTask>> GetAllTask()
         {
-            IEnumerable<FinalTask> result = _dbContext.Connection.Query<FinalTask>("Final_Task_Package.GETALLTasks", commandType: CommandType.StoredProcedure);
+            var  result = await _dbContext.Connection.QueryAsync<FinalTask, FinalSolution, FinalTask>("Final_Task_Package.GETALLTasks", (task, solution) =>
+            {
+                task.FinalSolutions.Add(solution);
+                return task;
+            },
+            
+            splitOn: "Task_Id,Solutionid",
+            param:null,
+            commandType:CommandType.StoredProcedure
+
+            );
+
+            var results = result.GroupBy(p => p.Taskid).Select(g =>
+            {
+                var groupedPost = g.First();
+                groupedPost.FinalSolutions = g.Select(p => p.FinalSolutions.Single()).ToList();
+
+                return groupedPost;
+            });
             return result.ToList();
         }
 
