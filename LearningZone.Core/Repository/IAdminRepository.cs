@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,6 @@ namespace LearningZone.Core.Repository
         void DeleteAdmin(int id);
         void HandleRegistration(FinalTrainee trainee);
         void GenerateCertificate(int type);
+        OptainReport optainReport();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -20,7 +21,10 @@ namespace LearningZone.Infra.Service
         {
             adminRepository.CreateAdmin(admin);
         }
-
+        public OptainReport optainReport()
+        {
+            return adminRepository.optainReport();
+        }
         public void DeleteAdmin(int id)
         {
             adminRepository.DeleteAdmin(id);

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,12 @@ namespace LearningZone.API.Controllers
         public void DeleteAdmin(int id)
         {
             adminService.DeleteAdmin(id);
+        }
+        [HttpGet]
+        [Route("OptainReport")]
+        public OptainReport optainReport()
+        {
+            return adminService.optainReport();
         }
         [HttpGet]
         [Route("GetAdminByID/{id}")]

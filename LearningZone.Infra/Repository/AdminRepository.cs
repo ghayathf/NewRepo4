@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,12 @@ namespace LearningZone.Infra.Repository
 
             return result.ToList();
         }
-
+        public OptainReport optainReport()
+        {
+            IEnumerable<OptainReport> result = dbContext.Connection.Query<OptainReport>("Final_Admin_PACKAGE.OptainReport",
+               commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
         public void CreateAdmin(FinalAdmin admin)
         {
             var p = new DynamicParameters();
