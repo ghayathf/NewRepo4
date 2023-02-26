@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,16 @@ namespace LearningZone.Infra.Repository
             p.Add("CatID", finalCourse.Category_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Course_Package.UpdateCourse", p, commandType: CommandType.StoredProcedure);
+        }
+        public List<SearchCourse> SearcheStudenCourse(SearchCourse searchCourse)
+        {
+            var p = new DynamicParameters();
+            p.Add("course_name", searchCourse.Coursename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("course_level", searchCourse.Courselevel, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("category_name", searchCourse.Categoryname, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            var result = dbContext.Connection.Query<SearchCourse>("Final_Course_Package.SearchCourse", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
     }
 }

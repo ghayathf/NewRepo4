@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -75,5 +76,7 @@ namespace LearningZone.Infra.Repository
             p.Add("Typee", type, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Admin_PACKAGE.Generate_Certificate", p, commandType: CommandType.StoredProcedure);
         }
+
+     
     }
  }

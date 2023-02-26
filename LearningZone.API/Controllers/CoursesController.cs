@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,12 @@ namespace LearningZone.API.Controllers
         public void UpdateCourse(FinalCourse finalCourse)
         {
             courseService.UpdateCourse(finalCourse);
+        }
+        [HttpPost]
+        [Route("SearchCourse")]
+        public List<SearchCourse> SearchCourse(SearchCourse searchCourse)
+        {
+            return courseService.SearcheStudenCourse(searchCourse);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -34,6 +35,11 @@ namespace LearningZone.Infra.Service
         public FinalCourse GetCourseById(int id)
         {
             return courseRepository.GetCourseById(id);
+        }
+
+        public List<SearchCourse> SearcheStudenCourse(SearchCourse searchCourse)
+        {
+            return courseRepository.SearcheStudenCourse(searchCourse);
         }
 
         public void UpdateCourse(FinalCourse finalCourse)
