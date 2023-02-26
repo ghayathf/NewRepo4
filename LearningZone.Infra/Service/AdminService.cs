@@ -21,7 +21,7 @@ namespace LearningZone.Infra.Service
         {
             adminRepository.CreateAdmin(admin);
         }
-        public OptainReport optainReport()
+        public List<OptainReport> optainReport()
         {
             return adminRepository.optainReport();
         }

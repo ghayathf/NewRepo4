@@ -26,11 +26,11 @@ namespace LearningZone.Infra.Repository
 
             return result.ToList();
         }
-        public OptainReport optainReport()
+        public List<OptainReport> optainReport()
         {
             IEnumerable<OptainReport> result = dbContext.Connection.Query<OptainReport>("Final_Admin_PACKAGE.OptainReport",
                commandType: CommandType.StoredProcedure);
-            return result.FirstOrDefault();
+            return result.ToList();
         }
         public void CreateAdmin(FinalAdmin admin)
         {

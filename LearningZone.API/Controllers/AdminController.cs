@@ -34,7 +34,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("OptainReport")]
-        public OptainReport optainReport()
+        public List<OptainReport> optainReport()
         {
             return adminService.optainReport();
         }
