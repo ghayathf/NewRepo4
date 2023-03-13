@@ -34,6 +34,14 @@ namespace LearningZone.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy("policy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
             
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -107,6 +115,7 @@ namespace LearningZone.API
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors("policy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
