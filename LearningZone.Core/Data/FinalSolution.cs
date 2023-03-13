@@ -14,7 +14,7 @@ namespace LearningZone.Core.Data
         public decimal? T_S_Id { get; set; }
         public decimal? Task_Id { get; set; }
 
-        //public virtual FinalTraineesection TS { get; set; }
-        //public virtual FinalTask Task { get; set; }
+        public virtual FinalTraineesection TS { get; set; }
+        public virtual FinalTask Task { get; set; }
     }
 }

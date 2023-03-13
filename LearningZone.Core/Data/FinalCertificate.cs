@@ -11,6 +11,6 @@ namespace LearningZone.Core.Data
         public decimal? Certificatetype { get; set; }
         public decimal? T_S_Id { get; set; }
 
-        //public virtual FinalTraineesection TS { get; set; }
+        public virtual FinalTraineesection TS { get; set; }
     }
 }

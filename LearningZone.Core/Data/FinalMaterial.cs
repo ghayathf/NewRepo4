@@ -12,6 +12,6 @@ namespace LearningZone.Core.Data
         public string Materialname { get; set; }
         public decimal? Section_Id { get; set; }
 
-       // public virtual FinalSection Section { get; set; }
+        public virtual FinalSection Section { get; set; }
     }
 }
