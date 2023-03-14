@@ -47,7 +47,7 @@ namespace LearningZone.Infra.Repository
             {
                 user.FinalComments.Add(comment);
                 user.FinalReplies.Add(reply);
-                user.FinalTestimonials.Add(testimonial);
+                user.FinalTestimonials.Add(testimonial); 
                 return user;
             },
             splitOn: "Userid,Commentid,Replyid,TESTIMONIALID"
