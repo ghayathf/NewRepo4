@@ -13,5 +13,6 @@ namespace LearningZone.Core.Service
         void CreateAbsence(FinalTakeattendance takeattendance);
         void UpdateAttendance(FinalTakeattendance takeattendance);
         int RetrieveAttendanceCount(int IDD);
+        List<FinalTrainee> GetAbsentTrainees();
     }
 }

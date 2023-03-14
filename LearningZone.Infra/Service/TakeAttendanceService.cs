@@ -26,6 +26,11 @@ namespace LearningZone.Infra.Service
             takeAttendanceRepository.CreateAttendance(takeattendance);
         }
 
+        public List<FinalTrainee> GetAbsentTrainees()
+        {
+            return takeAttendanceRepository.GetAbsentTrainees();
+        }
+
         public List<FinalTakeattendance> GetAttendanceByDate(DateTime D)
         {
             return takeAttendanceRepository.GetAttendanceByDate(D);
