@@ -91,5 +91,13 @@ namespace LearningZone.Infra.Repository
             p.Add("UROLE_ID", user.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_User_Package.UpdateUser", p, commandType: CommandType.StoredProcedure);
         }
+        public FinalUser Auth(FinalUser login)
+        {
+            var p = new DynamicParameters();
+            p.Add("Email", login.Email, DbType.String, direction: ParameterDirection.Input);
+            p.Add("passsword", login.Userpassword, DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<FinalUser> result = dbContext.Connection.Query<FinalUser>("Final_User_Package.LOGIN_CHECKING", p, commandType: System.Data.CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
     }
 }

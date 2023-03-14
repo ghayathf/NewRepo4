@@ -13,5 +13,6 @@ namespace LearningZone.Core.Service
         void CREATEUser(FinalUser user);
         void UpdateUser(FinalUser user);
         void DELETEUser(int id);
+        string Auth(FinalUser login);
     }
 }

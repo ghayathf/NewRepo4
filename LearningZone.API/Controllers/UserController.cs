@@ -49,5 +49,19 @@ namespace LearningZone.API.Controllers
         {
             userService.UpdateUser(user);
         }
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Auth([FromBody] FinalUser login)
+        {
+            var token = userService.Auth(login);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Ok(token);
+            }
+        }
     }
 }

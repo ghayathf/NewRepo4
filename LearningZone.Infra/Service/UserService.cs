@@ -1,8 +1,11 @@
 ﻿using LearningZone.Core.Data;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +18,30 @@ namespace LearningZone.Infra.Service
         {
             this.userRepository = userRepository;
         }
+
+        public string Auth(FinalUser login)
+        {
+            var result = userRepository.Auth(login);
+            if (result == null)
+            {
+                return null;
+            }
+            else
+            {
+                var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKeyLMSProject"));
+                var signin = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,result.Username),
+                    new Claim(ClaimTypes.Role,result.Role_Id.ToString())
+                };
+                var tokenOptions = new JwtSecurityToken(claims: claims, expires: DateTime.Now.AddSeconds(60),
+                    signingCredentials: signin);
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+                return tokenString;
+            }
+        }
+
         public void CREATEUser(FinalUser user)
         {
             userRepository.CREATEUser(user);
