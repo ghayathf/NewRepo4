@@ -15,6 +15,6 @@ namespace LearningZone.Core.Service
         void DeleteAdmin(int id);
         void HandleRegistration(FinalTrainee trainee);
         void GenerateCertificate(int type);
-
+        List<OptainReport> optainReport();
     }
 }

@@ -37,6 +37,14 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_TakeAttendance_Package.CreateAttendance", p, commandType: CommandType.StoredProcedure);
         }
 
+        public List<FinalTrainee> GetAbsentTrainees()
+        {
+            IEnumerable<FinalTrainee> result = _dbContext.Connection.Query<FinalTrainee>("Final_TakeAttendance_Package.select_absent_trainees",
+               commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
+
         public List<FinalTakeattendance> GetAttendanceByDate(DateTime D)
         {
             var p = new DynamicParameters();

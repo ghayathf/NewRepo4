@@ -22,6 +22,7 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("cat_name", finalCategory.Categoryname, DbType.String, direction: ParameterDirection.Input);
+            p.Add("cat_img", finalCategory.Categoryimage, DbType.String, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_category_Package.CreateCategory", p, commandType: CommandType.StoredProcedure);
         }
@@ -73,6 +74,8 @@ namespace LearningZone.Infra.Repository
             var p = new DynamicParameters();
             p.Add("id", finalCategory.Categoryid, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("cat_name", finalCategory.Categoryname, DbType.String, direction: ParameterDirection.Input);
+            p.Add("cat_img", finalCategory.Categoryimage, DbType.String, direction: ParameterDirection.Input);
+
 
             dbContext.Connection.Execute("Final_category_Package.UpdateCategory", p, commandType: CommandType.StoredProcedure);
         }
