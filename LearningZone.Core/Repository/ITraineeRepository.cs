@@ -10,6 +10,7 @@ namespace LearningZone.Core.Repository
    public interface ITraineeRepository
     {
         Task <List<FinalTrainee>> GETALLTrainees();
+        List<TraineeUser> GetAllTraineeUsers();
         FinalTrainee GetTraineeByID(int IDD);
         void InsertTrainee(FinalTrainee trainee);
         void UpdateTrainee(FinalTrainee trainee);

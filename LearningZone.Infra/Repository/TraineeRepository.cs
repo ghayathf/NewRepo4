@@ -51,6 +51,14 @@ namespace LearningZone.Infra.Repository
             return result.ToList();
         }
 
+        public List<TraineeUser> GetAllTraineeUsers()
+        {
+            IEnumerable<TraineeUser> result = dbContext.Connection.Query<TraineeUser>("Final_Trainee_PACKAGE.GETALLUSERTrainee",
+              commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
+
         public FinalTrainee GetTraineeByID(int IDD)
         {
             var p = new DynamicParameters();
@@ -66,7 +74,7 @@ namespace LearningZone.Infra.Repository
             p.Add("Major", trainee.Major, DbType.String, direction: ParameterDirection.Input);
             p.Add("University", trainee.University, DbType.String, direction: ParameterDirection.Input);
             p.Add("TraineeField", trainee.Traineefield, DbType.String, direction: ParameterDirection.Input);
-            p.Add("RegisterStatus",-1 /*trainee.Registerstatus*/, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RegisterStatus",trainee.Registerstatus /*trainee.Registerstatus*/, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("User_ID", trainee.User_Id, DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Trainee_PACKAGE.InsertTrainee", p, commandType: CommandType.StoredProcedure);
         }
