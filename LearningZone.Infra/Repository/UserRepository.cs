@@ -27,7 +27,7 @@ namespace LearningZone.Infra.Repository
             p.Add("PhoneNum", user.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("FName", user.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LName", user.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("UROLE_ID", user.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UROLE_ID", user.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_User_Package.CREATEUser", p, commandType: CommandType.StoredProcedure);
         }
         //(UName IN Final_User.UserName%TYPE,UPassword IN Final_User.UserPassword%TYPE,UEmail IN Final_User.Email%TYPE,PhoneNum IN Final_User.PhoneNumber%TYPE,FName IN Final_User.FirstName%TYPE,LName IN Final_User.LastName%TYPE,UROLE_ID IN Final_User.ROLE_ID%TYPE);
@@ -88,13 +88,13 @@ namespace LearningZone.Infra.Repository
             p.Add("PhoneNum", user.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("FName", user.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LName", user.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("UROLE_ID", user.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UROLE_ID", user.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_User_Package.UpdateUser", p, commandType: CommandType.StoredProcedure);
         }
         public FinalUser Auth(FinalUser login)
         {
             var p = new DynamicParameters();
-            p.Add("Email", login.Email, DbType.String, direction: ParameterDirection.Input);
+            p.Add("usernameee", login.Username, DbType.String, direction: ParameterDirection.Input);
             p.Add("passsword", login.Userpassword, DbType.String, direction: ParameterDirection.Input);
             IEnumerable<FinalUser> result = dbContext.Connection.Query<FinalUser>("Final_User_Package.LOGIN_CHECKING", p, commandType: System.Data.CommandType.StoredProcedure);
             return result.FirstOrDefault();
