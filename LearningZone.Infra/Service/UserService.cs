@@ -28,14 +28,16 @@ namespace LearningZone.Infra.Service
             }
             else
             {
-                var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKeyLMSProject"));
+                var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKeyLMSProjectttttttt"));
                 var signin = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,result.Username),
-                    new Claim(ClaimTypes.Role,result.Role_Id.ToString())
+                    new Claim("Username", result.Username),
+                    new Claim("RoleId", result.RoleId.ToString())
                 };
-                var tokenOptions = new JwtSecurityToken(claims: claims, expires: DateTime.Now.AddSeconds(60),
+                var tokenOptions = new JwtSecurityToken(
+                    claims: claims,
+                    expires: DateTime.Now.AddSeconds(60),
                     signingCredentials: signin);
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
                 return tokenString;

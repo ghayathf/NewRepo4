@@ -24,7 +24,7 @@ namespace LearningZone.Core.Data
         public string Phonenumber { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public decimal? Role_Id { get; set; }
+        public decimal? RoleId { get; set; }
 
         public virtual FinalRole Role { get; set; }
         public virtual ICollection<FinalAdmin> FinalAdmins { get; set; }
