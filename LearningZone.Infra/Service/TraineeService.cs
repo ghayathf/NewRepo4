@@ -25,6 +25,12 @@ namespace LearningZone.Infra.Service
         {
            return await traineeRepository.GETALLTrainees();
         }
+
+        public List<TraineeUser> GetAllTraineeUsers()
+        {
+            return traineeRepository.GetAllTraineeUsers();
+        }
+
         //
         public FinalTrainee GetTraineeByID(int IDD)
         {

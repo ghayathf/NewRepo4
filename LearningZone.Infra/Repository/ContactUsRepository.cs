@@ -21,11 +21,11 @@ namespace LearningZone.Infra.Repository
         public void CreateContactUs(FinalContactu contact)
         {
             var p = new DynamicParameters();
-            p.Add("FirstName", contact.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LastName", contact.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Email", contact.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("PhoneNumber", contact.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
-
+            p.Add("FName", contact.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LName", contact.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Email_", contact.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PhoneNumber_", contact.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("message_", contact.Message, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_ContactUs_Package.InsertContactUs", p, commandType: CommandType.StoredProcedure);
         }
 

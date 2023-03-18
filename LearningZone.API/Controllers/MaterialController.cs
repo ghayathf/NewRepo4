@@ -27,7 +27,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpDelete]
         [Route("DeleteMaterial/{id}")]
-        public void DeleteAbout(int id)
+        public void DeleteMaterial(int id)
         {
             materialService.DELETEMaterial(id);
         }
@@ -39,13 +39,13 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("gatAllMaterials")]
-        public List<FinalMaterial> GetAllAbouts()
+        public List<FinalMaterial> GatAllMaterials()
         {
             return materialService.GETALLMaterials();
         }
         [HttpPut]
         [Route("UpdateMaterial")]
-        public void UpdateAbout(FinalMaterial material)
+        public void UpdateMaterial(FinalMaterial material)
         {
             materialService.UpdateMaterial(material);
         }

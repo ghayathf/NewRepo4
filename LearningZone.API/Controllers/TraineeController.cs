@@ -25,6 +25,12 @@ namespace LearningZone.API.Controllers
         {
             traineeService.InsertTrainee(trainee);
         }
+        [HttpGet]
+        [Route("GetAllTraineeUser")]
+        public List<TraineeUser> GetAllTraineeUsers()
+        {
+            return traineeService.GetAllTraineeUsers();
+        }
         [HttpDelete]
         [Route("DeleteTrainee/{id}")]
         public void DeleteTrainee(int id)
