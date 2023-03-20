@@ -26,7 +26,7 @@ namespace LearningZone.Infra.Repository
             p.Add("CourseD", finalCourse.Coursedescription, DbType.String, direction: ParameterDirection.Input);
             p.Add("CourseImg", finalCourse.Courseimage, DbType.String, direction: ParameterDirection.Input);
             p.Add("CourseLev", finalCourse.Courselevel, DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CatID", finalCourse.Category_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CatID", finalCourse.category_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Course_Package.CREATECourse", p, commandType: CommandType.StoredProcedure);
         }
@@ -82,7 +82,7 @@ namespace LearningZone.Infra.Repository
             p.Add("CourseD", finalCourse.Coursedescription, DbType.String, direction: ParameterDirection.Input);
             p.Add("CourseImg", finalCourse.Courseimage, DbType.String, direction: ParameterDirection.Input);
             p.Add("CourseLev", finalCourse.Courselevel, DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CatID", finalCourse.Category_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CatID", finalCourse.category_Id, DbType.Int32, direction: ParameterDirection.Input);
 
             dbContext.Connection.Execute("Final_Course_Package.UpdateCourse", p, commandType: CommandType.StoredProcedure);
         }
