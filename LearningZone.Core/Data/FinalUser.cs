@@ -25,6 +25,7 @@ namespace LearningZone.Core.Data
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public decimal? RoleId { get; set; }
+        public string Imagename { get; set; }
 
         public virtual FinalRole Role { get; set; }
         public virtual ICollection<FinalAdmin> FinalAdmins { get; set; }

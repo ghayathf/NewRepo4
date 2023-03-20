@@ -20,7 +20,9 @@ namespace LearningZone.Core.Data
         public decimal? Taskstatus { get; set; }
         public string Taskfile { get; set; }
         public string Tasknote { get; set; }
+        public decimal? Sectionidd { get; set; }
 
+        public virtual FinalSection SectioniddNavigation { get; set; }
         public virtual ICollection<FinalSolution> FinalSolutions { get; set; }
     }
 }

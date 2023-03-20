@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -25,7 +26,7 @@ namespace LearningZone.Infra.Service
             testimonialRepository.DeleteTestimonial(id);
         }
 
-        public List<FinalTestimonial> GetAllTestimonial()
+        public List<Testimonial> GetAllTestimonial()
         {
             return testimonialRepository.GetAllTestimonial();
         }

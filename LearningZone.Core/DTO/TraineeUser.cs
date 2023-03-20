@@ -17,6 +17,6 @@ namespace LearningZone.Core.DTO
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public decimal Traineeid { get; set; }
-        public decimal Userid { get; set; }
+        public decimal User_Id { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace LearningZone.API.Controllers
         }
         [HttpGet]
         [Route("GetAllTestimonials")]
-        public List<FinalTestimonial> GetAllTestimonial()
+        public List<Testimonial> GetAllTestimonial()
         {
             return _testimonialService.GetAllTestimonial();
         }

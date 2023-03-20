@@ -30,9 +30,9 @@ namespace LearningZone.Infra.Service
             adminRepository.DeleteAdmin(id);
         }
 
-        public void GenerateCertificate(int type)
+        public void GenerateCertificate(int type, int secId)
         {
-            adminRepository.GenerateCertificate(type);
+            adminRepository.GenerateCertificate(type, secId);
         }
 
         public FinalAdmin GetAdminByID(int id)
