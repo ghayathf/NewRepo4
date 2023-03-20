@@ -19,5 +19,9 @@
     <ProjectReference Include="..\LearningZone.Infra\LearningZone.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 
 </Project>

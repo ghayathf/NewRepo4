@@ -4,7 +4,9 @@ using LearningZone.Core.Service;
 using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace LearningZone.API.Controllers
@@ -47,6 +49,25 @@ namespace LearningZone.API.Controllers
         public void UpdateCategory(FinalCategory finalCategory)
         {
             categoryService.UpdateCategory(finalCategory);
+        }
+
+        [Route("UploadImage")]
+        [HttpPost]
+        public FinalCategory UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\images", fileName);
+
+            using (var stream = new FileStream(fullpath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            FinalCategory item = new FinalCategory();
+            item.Categoryimage = fileName;
+
+            return item;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
 using System;
@@ -37,10 +38,10 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_Testimonial_Package.DELETETestimoniaL", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalTestimonial> GetAllTestimonial()
+        public List<Testimonial> GetAllTestimonial()
         {
 
-            IEnumerable<FinalTestimonial> result = _dbContext.Connection.Query<FinalTestimonial>("Final_Testimonial_Package.GetAllTestimonial", commandType: CommandType.StoredProcedure);
+            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("Final_Testimonial_Package.GetAllTestimonial", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
