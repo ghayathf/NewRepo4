@@ -11,7 +11,6 @@ namespace LearningZone.Core.Repository
         FinalCertificate GetTCertificateById(int id);
         void CreateCertificate(FinalCertificate finalCertificate);
         void UpdateCertificate(FinalCertificate finalCertificate);
-
         void DeleteCertificate(int id);
     }
 }

@@ -48,7 +48,7 @@ namespace LearningZone.Infra.Repository
         {
             var  result = await _dbContext.Connection.QueryAsync<FinalTask, FinalSolution, FinalTask>("Final_Task_Package.GETALLTasks", (task, solution) =>
             {
-                task.FinalSolutions.Add(solution);
+                //task.FinalSolutions.Add(solution);
                 return task;
             },
             
@@ -61,7 +61,7 @@ namespace LearningZone.Infra.Repository
             var results = result.GroupBy(p => p.Taskid).Select(g =>
             {
                 var groupedPost = g.First();
-                groupedPost.FinalSolutions = g.Select(p => p.FinalSolutions.Single()).ToList();
+                //groupedPost.FinalSolutions = g.Select(p => p.FinalSolutions.Single()).ToList();
 
                 return groupedPost;
             });

@@ -10,6 +10,7 @@ namespace LearningZone.Core.Data
         public FinalSection()
         {
             FinalMaterials = new HashSet<FinalMaterial>();
+            FinalTasks = new HashSet<FinalTask>();
             FinalTraineesections = new HashSet<FinalTraineesection>();
         }
 
@@ -26,6 +27,7 @@ namespace LearningZone.Core.Data
         public virtual FinalCourse Course { get; set; }
         public virtual FinalTrainer Trainer { get; set; }
         public virtual ICollection<FinalMaterial> FinalMaterials { get; set; }
+        public virtual ICollection<FinalTask> FinalTasks { get; set; }
         public virtual ICollection<FinalTraineesection> FinalTraineesections { get; set; }
     }
 }
