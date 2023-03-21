@@ -24,7 +24,7 @@ namespace LearningZone.API.Controllers
         public void InsertAttendance(FinalTrainee trainee)
         {
             traineeService.InsertTrainee(trainee);
-        }
+        }  
         [HttpGet]
         [Route("GetAllTraineeUser")]
         public List<TraineeUser> GetAllTraineeUsers()
