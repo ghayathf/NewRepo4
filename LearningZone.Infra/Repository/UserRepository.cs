@@ -89,6 +89,7 @@ namespace LearningZone.Infra.Repository
             p.Add("FName", user.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LName", user.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("UROLE_ID", user.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("user_image", user.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_User_Package.UpdateUser", p, commandType: CommandType.StoredProcedure);
         }
         public FinalUser Auth(FinalUser login)
