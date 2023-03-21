@@ -45,7 +45,7 @@ namespace LearningZone.API.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteHomePage")]
+        [Route("DeleteHomePage/{id}")]
         public void DeleteHomeInformation(int id)
         {
             _homeService.DeleteHomeInformation(id);
