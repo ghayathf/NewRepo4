@@ -44,7 +44,7 @@ namespace LearningZone.API.Controllers
             _taskService.UpdateTask(finalTask);
         }
         [HttpDelete]
-        [Route("DeleteTask")]
+        [Route("DeleteTask/{id}")]
        public void DeleteTask(int id)
         {
             _taskService.DeleteTask(id);

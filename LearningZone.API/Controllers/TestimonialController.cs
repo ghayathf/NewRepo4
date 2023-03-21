@@ -42,7 +42,7 @@ namespace LearningZone.API.Controllers
             _testimonialService.UpdateTestimonial(finalTestimonial);
         }
         [HttpDelete]
-        [Route("DeleteTestimonial")]
+        [Route("DeleteTestimonial/{id}")]
         public void DeleteTestimonial(int id)
         {
             _testimonialService.DeleteTestimonial(id);

@@ -42,7 +42,7 @@ namespace LearningZone.API.Controllers
             _roleService.UpdateRole(finalRole);
         }
         [HttpDelete]
-        [Route("DeleteRole")]
+        [Route("DeleteRole/{id}")]
         public void DeleteRole(int id)
         {
             _roleService.DeleteRole(id);
