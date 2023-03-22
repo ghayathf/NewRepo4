@@ -18,7 +18,8 @@ namespace LearningZone.Core.Data
         public decimal? Totalattendance { get; set; }
         public decimal? T_S_Status { get; set; }
         public decimal? Trainee_Id { get; set; }
-        public decimal? Section_Id { get; set; }
+
+        public decimal? Section_id { get; set; }
 
         public virtual FinalSection Section { get; set; }
         public virtual FinalTrainee Trainee { get; set; }

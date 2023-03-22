@@ -61,5 +61,13 @@ namespace LearningZone.API.Controllers
         {
             return traineeService.SerchTrainees(trainee);
         }
+
+        [HttpGet]
+        [Route("GetAllAccepted")]
+        public List<AcceptedTrainee> GetAllAccepted()
+        {
+            return traineeService.GetAllAccepted();
+
+        }
     }
 }

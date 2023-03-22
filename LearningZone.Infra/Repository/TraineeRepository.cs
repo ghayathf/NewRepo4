@@ -26,6 +26,14 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Execute("Final_Trainee_PACKAGE.DELETETrainee", p, commandType: System.Data.CommandType.StoredProcedure);
         }
 
+        public List<AcceptedTrainee> GetAllAccepted()
+        {
+            IEnumerable<AcceptedTrainee> result = dbContext.Connection.Query<AcceptedTrainee>("Final_Trainee_PACKAGE.GETALLAcceptedTrainee ",
+             commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
+
         public async Task <List<FinalTrainee>> GETALLTrainees()
         {
             var result = await dbContext.Connection.QueryAsync<FinalTrainee,FinalTraineesection,FinalTrainee>("Final_Trainee_PACKAGE.GETALLTrainees", (Trainee, TraineeSection) =>
