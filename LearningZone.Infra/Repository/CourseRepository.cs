@@ -96,5 +96,10 @@ namespace LearningZone.Infra.Repository
             var result = dbContext.Connection.Query<SearchCourse>("Final_Course_Package.SearchCourse", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+        public List<Averages> Avgs()
+        {
+            var result = dbContext.Connection.Query<Averages>("Final_Course_Package.get_exam_averages", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

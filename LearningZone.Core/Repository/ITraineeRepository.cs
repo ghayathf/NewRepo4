@@ -11,6 +11,7 @@ namespace LearningZone.Core.Repository
     {
         Task <List<FinalTrainee>> GETALLTrainees();
         List<TraineeUser> GetAllTraineeUsers();
+        List<AcceptedTrainee> GetAllAccepted();
         FinalTrainee GetTraineeByID(int IDD);
         void InsertTrainee(FinalTrainee trainee);
         void UpdateTrainee(FinalTrainee trainee);

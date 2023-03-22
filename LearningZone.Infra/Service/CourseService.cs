@@ -26,7 +26,10 @@ namespace LearningZone.Infra.Service
         {
             courseRepository.DeleteCourse(id);
         }
-
+        public List<Averages> Avgs()
+        {
+            return courseRepository.Avgs();
+        }
         public Task<List<FinalCourse>> GetAllCourses()
         {
             return courseRepository.GetAllCourses();

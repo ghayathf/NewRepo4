@@ -31,7 +31,7 @@ namespace LearningZone.API.Controllers
         {
             trainerService.DeleteTrainer(id);
         }
-        [HttpGet]
+        [HttpGet] 
         [Route("GetTrainerByID/{id}")]
         public FinalTrainer GetTrainerByID(int id)
         {
