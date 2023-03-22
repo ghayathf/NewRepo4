@@ -24,7 +24,7 @@ namespace LearningZone.API.Controllers
         public void InsertAttendance(FinalTrainee trainee)
         {
             traineeService.InsertTrainee(trainee);
-        }
+        }  
         [HttpGet]
         [Route("GetAllTraineeUser")]
         public List<TraineeUser> GetAllTraineeUsers()
@@ -60,6 +60,14 @@ namespace LearningZone.API.Controllers
         public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
         {
             return traineeService.SerchTrainees(trainee);
+        }
+
+        [HttpGet]
+        [Route("GetAllAccepted")]
+        public List<AcceptedTrainee> GetAllAccepted()
+        {
+            return traineeService.GetAllAccepted();
+
         }
     }
 }

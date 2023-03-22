@@ -16,5 +16,6 @@ namespace LearningZone.Core.Service
         void UpdateTrainee(FinalTrainee trainee);
         void DELETETrainee(int IDD);
         List<SearchTrainee> SerchTrainees(SearchTrainee trainee);
+        List<AcceptedTrainee> GetAllAccepted();
     }
 }

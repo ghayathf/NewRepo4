@@ -21,6 +21,11 @@ namespace LearningZone.Infra.Service
             traineeRepository.DELETETrainee(IDD);
         }
 
+        public List<AcceptedTrainee> GetAllAccepted()
+        {
+           return traineeRepository.GetAllAccepted();
+        }
+
         public async Task< List<FinalTrainee>> GETALLTrainees()
         {
            return await traineeRepository.GETALLTrainees();

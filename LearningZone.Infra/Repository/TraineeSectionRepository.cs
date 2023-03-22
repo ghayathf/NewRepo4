@@ -25,7 +25,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TSAttendance", traineesection.Totalattendance, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TSStatus", traineesection.T_S_Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TID",traineesection.Trainee_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("SecID", traineesection.Section_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("SecID", traineesection.Section_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_TraineeSection_Package.CREATETraineeSection", p, commandType: CommandType.StoredProcedure);
 
         }
@@ -84,7 +84,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TSAttendance", traineesection.Totalattendance, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TSStatus", traineesection.T_S_Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TID", traineesection.Trainee_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("SecID", traineesection.Section_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("SecID", traineesection.Section_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_TraineeSection_Package.UpdateTraineeSection", p, commandType: CommandType.StoredProcedure);
         }
     }
