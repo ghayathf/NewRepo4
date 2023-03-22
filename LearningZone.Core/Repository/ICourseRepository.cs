@@ -15,7 +15,7 @@ namespace LearningZone.Core.Repository
         void UpdateCourse(FinalCourse finalCourse);
         void DeleteCourse(int id);
         List<SearchCourse> SearcheStudenCourse(SearchCourse searchCourse);
-
+        List<Averages> Avgs();
 
     }
 }

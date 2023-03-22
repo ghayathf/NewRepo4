@@ -50,6 +50,12 @@ namespace LearningZone.API.Controllers
         {
             courseService.UpdateCourse(finalCourse);
         }
+        [HttpGet]
+        [Route("CoursesAvgs")]
+        public List<Averages> Avgs()
+        {
+            return courseService.Avgs();
+        }
         [HttpPost]
         [Route("SearchCourse")]
         public List<SearchCourse> SearchCourse(SearchCourse searchCourse)
