@@ -11,6 +11,7 @@ namespace LearningZone.Core.Data
         public DateTime? Dateuploaded { get; set; }
         public string Materialname { get; set; }
         public decimal? Section_Id { get; set; }
+        public string Filepath { get; set; }
 
         public virtual FinalSection Section { get; set; }
     }
