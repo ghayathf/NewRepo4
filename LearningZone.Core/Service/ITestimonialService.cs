@@ -9,6 +9,7 @@ namespace LearningZone.Core.Service
     public interface ITestimonialService
     {
         List<Testimonial> GetAllTestimonial();
+            List<Testimonial> GetAllAcceptedTestimonial();
         FinalTestimonial GetTestimonialById(int id);
         void CreateHomeTestimonial(FinalTestimonial finalTestimonial);
         void UpdateTestimonial(FinalTestimonial finalTestimonial);

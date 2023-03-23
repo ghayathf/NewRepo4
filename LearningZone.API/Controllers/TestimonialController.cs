@@ -47,5 +47,12 @@ namespace LearningZone.API.Controllers
         {
             _testimonialService.DeleteTestimonial(id);
         }
+
+        [HttpGet]
+        [Route("GetAllAcceptedTestimonial")]
+        public List<Testimonial> GetAllAcceptedTestimonial()
+        {
+            return _testimonialService.GetAllAcceptedTestimonial();
+        }
     }
 }

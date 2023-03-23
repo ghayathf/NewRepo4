@@ -26,6 +26,11 @@ namespace LearningZone.Infra.Service
             testimonialRepository.DeleteTestimonial(id);
         }
 
+        public List<Testimonial> GetAllAcceptedTestimonial()
+        {
+            return testimonialRepository.GetAllAcceptedTestimonial();
+        }
+
         public List<Testimonial> GetAllTestimonial()
         {
             return testimonialRepository.GetAllTestimonial();

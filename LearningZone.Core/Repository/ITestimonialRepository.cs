@@ -9,6 +9,7 @@ namespace LearningZone.Core.Repository
     public interface ITestimonialRepository
     {
         List<Testimonial> GetAllTestimonial();
+        List<Testimonial> GetAllAcceptedTestimonial();
         FinalTestimonial GetTestimonialById(int id);
         void CreateHomeTestimonial(FinalTestimonial finalTestimonial);
         void UpdateTestimonial(FinalTestimonial finalTestimonial);

@@ -38,10 +38,17 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_Testimonial_Package.DELETETestimoniaL", p, commandType: CommandType.StoredProcedure);
         }
 
+        public List<Testimonial> GetAllAcceptedTestimonial()
+        {
+            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("Final_Testimonial_Package.GetAllAcceptedTestimonials", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
+        }
+
         public List<Testimonial> GetAllTestimonial()
         {
 
-            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("Final_Testimonial_Package.GetAllTestimonial", commandType: CommandType.StoredProcedure);
+            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("Final_Testimonial_Package.GetAllTestimonialDTO", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
