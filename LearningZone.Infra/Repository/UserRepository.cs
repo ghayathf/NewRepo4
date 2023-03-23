@@ -74,7 +74,6 @@ namespace LearningZone.Infra.Repository
             p.Add("IDD", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
              IEnumerable<FinalUser> result = dbContext.Connection.Query<FinalUser>("Final_User_Package.GetUserByID",
                 p, commandType: CommandType.StoredProcedure);
-
             return result.FirstOrDefault();
         }
 

@@ -66,7 +66,7 @@ namespace LearningZone.API.Controllers
         }
         [Route("UploadImage")]
         [HttpPost]
-        public FinalCourse UploadImage()
+        public FinalUser UploadImage()
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
@@ -77,8 +77,8 @@ namespace LearningZone.API.Controllers
                 file.CopyTo(stream);
             }
 
-            FinalCourse item = new FinalCourse();
-            item.Courseimage = fileName;
+            FinalUser item = new FinalUser();
+            item.Imagename = fileName;
             return item;
         }
     }
