@@ -36,15 +36,18 @@ namespace LearningZone.Infra.Repository
             p.Add("IDD", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Trainer_Package.DELETETrainer", p, commandType: CommandType.StoredProcedure);
         }
+        
+
 
         public async Task< List<FinalTrainer>> GetAllTrainers()
         {
-            var result = await dbContext.Connection.QueryAsync<FinalTrainer, FinalSection, FinalTrainer>("Final_Trainer_Package.GETALLTrainers", (Trainer, Section) =>
+            var result = await dbContext.Connection.QueryAsync<FinalTrainer, FinalSection, FinalTrainer>("Final_Trainer_Package.GETALLTrainers",
+                (Trainer, Section) =>
             {
                 Trainer.FinalSections.Add(Section);
                 return Trainer;
             },
-                splitOn: "Trainer_Id,Sectionid",
+                splitOn: "Trainerid , Sectionid",
                 param:null,
                 commandType:CommandType.StoredProcedure
             );
@@ -57,7 +60,7 @@ namespace LearningZone.Infra.Repository
                 return groupedPost;
             });
 
-            return result.ToList();
+            return results.ToList();
         }
 
         public FinalTrainer GetTrainerByID(int id)
