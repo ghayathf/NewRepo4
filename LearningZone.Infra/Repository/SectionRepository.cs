@@ -22,8 +22,8 @@ namespace LearningZone.Infra.Repository
         public void CreateSection(FinalSection section)
         {
             var p = new DynamicParameters();
-            p.Add("start_time", section.Starttime, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("end_time", section.Endtime, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("start_time", section.Starttime, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("end_time", section.Endtime, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("start_date", section.Startdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("end_date", section.Enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("url_meeting", section.Meetingurl, dbType: DbType.String, direction: ParameterDirection.Input);
@@ -83,8 +83,8 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Id", section.Sectionid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("start_time", section.Starttime, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("end_time", section.Endtime, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("start_time", section.Starttime, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("end_time", section.Endtime, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("start_date", section.Startdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("end_date", section.Enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("url_meeting", section.Meetingurl, dbType: DbType.String, direction: ParameterDirection.Input);
