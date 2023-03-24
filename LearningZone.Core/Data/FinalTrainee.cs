@@ -20,7 +20,6 @@ namespace LearningZone.Core.Data
         public decimal? Registerstatus { get; set; }
         public decimal? User_Id { get; set; }
 
-
         public virtual FinalUser User { get; set; }
         public virtual ICollection<FinalTraineesection> FinalTraineesections { get; set; }
     }
