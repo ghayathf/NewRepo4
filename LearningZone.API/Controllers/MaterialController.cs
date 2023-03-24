@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,6 +55,26 @@ namespace LearningZone.API.Controllers
         public List<FinalMaterial> SearchMaterials([FromBody]SearchMaterial material)
         {
             return materialService.SearchMaterials(material);
+        }
+
+
+        [Route("UploadMaterial")]
+        [HttpPost]
+        public FinalMaterial UploadMaterial()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\Materials", fileName);
+
+            using (var stream = new FileStream(fullpath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            FinalMaterial item = new FinalMaterial();
+            item.Filepath = fileName;
+
+            return item;
         }
     }
 }

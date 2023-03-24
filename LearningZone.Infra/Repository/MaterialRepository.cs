@@ -24,6 +24,8 @@ namespace LearningZone.Infra.Repository
             p.Add("DateUp", material.Dateuploaded, DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("MName", material.Materialname, DbType.String, direction: ParameterDirection.Input);
             p.Add("SecID", material.Section_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pathh", material.Filepath, DbType.String, direction: ParameterDirection.Input);
+
             var result = dbContext.Connection.Execute("Final_Material_Package.CREATEMaterial", p, commandType: System.Data.CommandType.StoredProcedure);
         }
 
@@ -65,6 +67,8 @@ namespace LearningZone.Infra.Repository
             p.Add("DateUp", material.Dateuploaded, DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("MName", material.Materialname, DbType.String, direction: ParameterDirection.Input);
             p.Add("SecID", material.Section_Id, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pathh", material.Filepath, DbType.String, direction: ParameterDirection.Input);
+
             var result = dbContext.Connection.Execute("Final_Material_Package.UpdateMaterial", p, commandType: System.Data.CommandType.StoredProcedure);
         }
     }
