@@ -15,8 +15,8 @@ namespace LearningZone.Core.Data
         }
 
         public decimal Sectionid { get; set; }
-        public DateTime? Starttime { get; set; }
-        public DateTime? Endtime { get; set; }
+        public string Starttime { get; set; }
+        public string Endtime { get; set; }
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
         public string Meetingurl { get; set; }

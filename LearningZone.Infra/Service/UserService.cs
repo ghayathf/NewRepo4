@@ -34,7 +34,13 @@ namespace LearningZone.Infra.Service
                 {
                     new Claim("Username", result.Username),
                     new Claim("RoleId", result.RoleId.ToString()),
-                    new Claim("Userid", result.Userid.ToString())
+                    new Claim("Userid", result.Userid.ToString()),
+                    new Claim("Firstname", result.Firstname),
+                    new Claim("Lastname", result.Lastname),
+                    new Claim("Phonenumber", result.Phonenumber),
+                    new Claim("Email", result.Email),
+                    new Claim("Imagename", result.Imagename),
+
                 };
                 var tokenOptions = new JwtSecurityToken(
                     claims: claims,
