@@ -53,9 +53,10 @@ namespace LearningZone.API.Controllers
         }
 
 
+
         [Route("UploadTask")]
         [HttpPost]
-        public FinalTask UploadMaterial()
+        public FinalTask UploadTask()
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
