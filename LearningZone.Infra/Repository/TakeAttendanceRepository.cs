@@ -22,7 +22,7 @@ namespace LearningZone.Infra.Repository
         public void CreateAbsence(FinalTakeattendance takeattendance)
         {
             var p = new DynamicParameters();
-            p.Add("attendDate", DateTime.Now, dbType: DbType.DateTime, ParameterDirection.Input);
+            p.Add("AbsenceDate", DateTime.Now, dbType: DbType.DateTime, ParameterDirection.Input);
             p.Add("ts", takeattendance.Tsid2, dbType: DbType.Int32, ParameterDirection.Input);
 
             var result = _dbContext.Connection.Execute("Final_TakeAttendance_Package.CreateAbsence", p, commandType: CommandType.StoredProcedure);
