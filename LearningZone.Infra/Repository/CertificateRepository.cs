@@ -47,7 +47,7 @@ namespace LearningZone.Infra.Repository
         public FinalCertificate GetTCertificateById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("IDD", id, dbType: DbType.Int32, ParameterDirection.Input);
+            p.Add("id", id, dbType: DbType.Int32, ParameterDirection.Input);
             IEnumerable<FinalCertificate> result = _dbContext.Connection.Query<FinalCertificate>("Final_Certificate_Package.GetCertificateByID", commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
