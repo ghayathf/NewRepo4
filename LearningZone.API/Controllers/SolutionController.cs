@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,6 +55,24 @@ namespace LearningZone.API.Controllers
         public void EnterSolutionMark(int id, double mark)
         {
             solutionService.EnterSolutionMark(id, mark);
+        }
+        [Route("UploadSolution")]
+        [HttpPost]
+        public FinalSolution UploadTask()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\solution", fileName);
+
+            using (var stream = new FileStream(fullpath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            FinalSolution item = new FinalSolution();
+            item.Solutionfile = fileName;
+
+            return item;
         }
     }
 }
