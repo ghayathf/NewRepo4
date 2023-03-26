@@ -31,6 +31,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("TFile", finalTask.Taskfile, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TNote", finalTask.Tasknote, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("secID", finalTask.Sectionidd, dbType: DbType.Int32, ParameterDirection.Input);
 
 
             var result = _dbContext.Connection.Execute("Final_Task_Package.CREATETask", p, commandType: CommandType.StoredProcedure);
@@ -87,6 +88,7 @@ namespace LearningZone.Infra.Repository
             p.Add("TStatus", finalTask.Taskstatus, dbType: DbType.Int32, ParameterDirection.Input);
             p.Add("TFile", finalTask.Taskfile, dbType: DbType.String, ParameterDirection.Input);
             p.Add("TNote", finalTask.Tasknote, dbType: DbType.String, ParameterDirection.Input);
+            p.Add("secID", finalTask.Sectionidd, dbType: DbType.Int32, ParameterDirection.Input);
 
 
             var result = _dbContext.Connection.Execute("Final_Task_Package.UpdateTask", p, commandType: CommandType.StoredProcedure);
