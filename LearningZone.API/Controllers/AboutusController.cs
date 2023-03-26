@@ -3,7 +3,9 @@ using LearningZone.Core.Service;
 using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LearningZone.API.Controllers
 {
@@ -45,6 +47,23 @@ namespace LearningZone.API.Controllers
         public void UpdateAbout(FinalAboutu finalAboutu)
         {
             aboutusService.UpdateAbout(finalAboutu);
+        }
+        [Route("UploadImage")]
+        [HttpPost]
+        public FinalAboutu UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\images", fileName);
+
+            using (var stream = new FileStream(fullpath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            FinalAboutu item = new FinalAboutu();
+            item.Aboutimage = fileName;
+            return item;
         }
     }
 }
