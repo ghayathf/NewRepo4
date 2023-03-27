@@ -62,7 +62,7 @@ namespace LearningZone.API.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\Solution", fileName);
+            var fullpath = Path.Combine("C:\\LearningHub_Angular-2\\src\\assets\\HomeAssets\\Solution", fileName);
 
             using (var stream = new FileStream(fullpath, FileMode.Create))
             {

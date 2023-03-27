@@ -66,7 +66,7 @@ namespace LearningZone.Infra.Repository
 
                 return groupedPost;
             });
-            return result.ToList();
+            return results.ToList();
         }
 
         public FinalTask GetTaskById(int id)
