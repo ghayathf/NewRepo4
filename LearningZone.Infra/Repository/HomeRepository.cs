@@ -63,7 +63,6 @@ namespace LearningZone.Infra.Repository
             p.Add("HOME_ID", finalHomepage.Homeid, dbType: DbType.Int32, ParameterDirection.Input);
 
             p.Add("Home_Logo", finalHomepage.Logo, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("back_ground", finalHomepage.Background, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR1", finalHomepage.Paragraph1, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR2", finalHomepage.Paragraph2, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR3", finalHomepage.Paragraph3, dbType: DbType.String, ParameterDirection.Input);
