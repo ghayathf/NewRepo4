@@ -24,7 +24,6 @@ namespace LearningZone.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Home_Logo", finalHomepage.Logo, dbType: DbType.String, ParameterDirection.Input);
-            p.Add("back_ground", finalHomepage.Background, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR1", finalHomepage.Paragraph1, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR2", finalHomepage.Paragraph2, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PAR3", finalHomepage.Paragraph3, dbType: DbType.String, ParameterDirection.Input);
@@ -70,7 +69,7 @@ namespace LearningZone.Infra.Repository
             p.Add("EMAIL", finalHomepage.Companyemail, dbType: DbType.String, ParameterDirection.Input);
             p.Add("PHONE", finalHomepage.Companyphonenumber, dbType: DbType.String, ParameterDirection.Input);
 
-            var result = _dbContext.Connection.Execute("Final_HomePage_Package.CREATEHOMEINFO", p, commandType: CommandType.StoredProcedure);
+            var result = _dbContext.Connection.Execute("Final_HomePage_Package.UPDATEHOMEINFO", p, commandType: CommandType.StoredProcedure);
         }
     }
 }
