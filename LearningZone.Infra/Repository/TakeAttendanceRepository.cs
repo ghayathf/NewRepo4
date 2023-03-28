@@ -37,10 +37,12 @@ namespace LearningZone.Infra.Repository
             var result = _dbContext.Connection.Execute("Final_TakeAttendance_Package.CreateAttendance", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<FinalTrainee> GetAbsentTrainees()
+        public List<FinalTrainee> GetAbsentTrainees(int SecID)
         {
+            var p = new DynamicParameters();
+            p.Add("secId", SecID, dbType: DbType.Int32, ParameterDirection.Input);
             IEnumerable<FinalTrainee> result = _dbContext.Connection.Query<FinalTrainee>("Final_TakeAttendance_Package.select_absent_trainees",
-               commandType: CommandType.StoredProcedure);
+               p,commandType: CommandType.StoredProcedure);
 
             return result.ToList();
         }

@@ -28,6 +28,7 @@ namespace LearningZone.Infra.Repository
             p.Add("FName", user.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LName", user.Lastname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("UROLE_ID", user.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("user_image", user.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_User_Package.CREATEUser", p, commandType: CommandType.StoredProcedure);
         }
         //(UName IN Final_User.UserName%TYPE,UPassword IN Final_User.UserPassword%TYPE,UEmail IN Final_User.Email%TYPE,PhoneNum IN Final_User.PhoneNumber%TYPE,FName IN Final_User.FirstName%TYPE,LName IN Final_User.LastName%TYPE,UROLE_ID IN Final_User.ROLE_ID%TYPE);

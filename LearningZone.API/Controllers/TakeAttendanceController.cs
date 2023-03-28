@@ -56,10 +56,10 @@ namespace LearningZone.API.Controllers
             takeAttendanceService.UpdateAttendance(takeattendance);
         }
         [HttpGet]
-        [Route("GetAbsentTrainees")]
-        public List<FinalTrainee> GetAbsentTrainees()
+        [Route("GetAbsentTrainees/{SecID}")]
+        public List<FinalTrainee> GetAbsentTrainees(int SecID)
         {
-            return takeAttendanceService.GetAbsentTrainees();
+            return takeAttendanceService.GetAbsentTrainees(SecID);
         }
     }
 }
