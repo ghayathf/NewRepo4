@@ -1,6 +1,8 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace LearningZone.Core.Repository
@@ -13,5 +15,6 @@ namespace LearningZone.Core.Repository
         void UpdateSolution(FinalSolution solution);
         void DeleteSolution(int id);
         void EnterSolutionMark(int id, double mark);
+        List<TaskSols> GetTaskSols(int TID);
     }
 }

@@ -46,7 +46,10 @@ namespace LearningZone.Infra.Service
         {
             traineeRepository.InsertTrainee(trainee);
         }
-
+        public List<SectionTrainees> GetSectionTrainees(int secId)
+        {
+            return traineeRepository.GetSectionTrainees(secId);
+        }
         public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
         {
            return traineeRepository.SerchTrainees(trainee);
