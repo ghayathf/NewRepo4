@@ -25,6 +25,7 @@ namespace LearningZone.Infra.Common
                 {
                     _Connection = new OracleConnection(_configuration["ConnectionStrings:DefaultConnection"]);
                     _Connection.Open();
+
                 }
                 else if (_Connection.State != ConnectionState.Open)
                 {
