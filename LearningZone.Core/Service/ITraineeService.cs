@@ -18,5 +18,6 @@ namespace LearningZone.Core.Service
         List<SearchTrainee> SerchTrainees(SearchTrainee trainee);
         List<AcceptedTrainee> GetAllAccepted();
         List<SectionTrainees> GetSectionTrainees(int secId);
+        List<TraineeInfo> GetTraineeInfosByUsd(int usid);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -20,7 +21,10 @@ namespace LearningZone.Infra.Service
         {
             sectionRepository.CreateSection(section);
         }
-
+        public List<SecInfo> GetSecInfos(int SecId)
+        {
+            return sectionRepository.GetSecInfos(SecId);
+        }
         public void DeleteSection(int id)
         {
             sectionRepository.DeleteSection(id);

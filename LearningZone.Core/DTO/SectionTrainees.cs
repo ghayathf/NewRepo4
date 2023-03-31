@@ -22,6 +22,7 @@ namespace LearningZone.Core.DTO
         public string Major { get; set; }
         public string University { get; set; }
         public string Traineefield { get; set; }
+        public string Imagename { get; set; }
         public decimal? Registerstatus { get; set; }
         public decimal? User_Id { get; set; }
 

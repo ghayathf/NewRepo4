@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,12 @@ namespace LearningZone.API.Controllers
         public UserController(IUserService userService)
         {
             this.userService = userService;
+        }
+        [HttpGet]
+        [Route("GetUserByTraineeInfo/{usid}")]
+        public List<TrainerInfo> GetTrainerInfoByUserId(int usid)
+        {
+            return userService.GetTrainerInfoByUserId(usid);
         }
         [HttpPost]
         [Route("CreateUser")]

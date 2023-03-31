@@ -21,6 +21,12 @@ namespace LearningZone.API.Controllers
             this.traineeService = traineeService;
         }
         [HttpGet]
+        [Route("GetSecTraineesInfos/{usid}")]
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            return traineeService.GetTraineeInfosByUsd(usid);
+        }
+        [HttpGet]
         [Route("GetSecTrainees/{secId}")]
         public List<SectionTrainees> GetSectionTrainees(int secId)
         {

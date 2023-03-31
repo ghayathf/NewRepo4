@@ -19,6 +19,15 @@ namespace LearningZone.Infra.Repository
         {
             this.dbContext = dbContext;
         }
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            var p = new DynamicParameters();
+            p.Add("usid", usid, dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Input);
+            IEnumerable<TraineeInfo> result = dbContext.Connection.Query<TraineeInfo>("Final_TraineeSection_Package.GetAllTraineeInfoByUserId ", p,
+             commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
         public void DELETETrainee(int IDD)
         {
             var p = new DynamicParameters();

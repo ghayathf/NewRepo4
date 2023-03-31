@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,14 @@ namespace LearningZone.Infra.Repository
         public UserRepository(IDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+        public List<TrainerInfo> GetTrainerInfoByUserId(int usid)
+        {
+            var p = new DynamicParameters();
+            p.Add("usid", usid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<TrainerInfo> result = dbContext.Connection.Query<TrainerInfo>("Final_User_Package.GETALLTrainerInfo",
+                p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
         public void CREATEUser(FinalUser user)
         {

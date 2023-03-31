@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +19,10 @@ namespace LearningZone.Infra.Service
         {
             this.userRepository = userRepository;
         }
-
+        public List<TrainerInfo> GetTrainerInfoByUserId(int usid)
+        {
+            return userRepository.GetTrainerInfoByUserId(usid);
+        }
         public string Auth(FinalUser login)
         {
             var result = userRepository.Auth(login);

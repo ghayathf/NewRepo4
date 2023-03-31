@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,12 @@ namespace LearningZone.API.Controllers
         {
             this.sectionService = sectionService;
         }
-
+        [HttpGet]
+        [Route("GetSecInfo/{SecId}")]
+        public List<SecInfo> GetSecInfos(int SecId)
+        {
+            return sectionService.GetSecInfos(SecId);
+        }
         [HttpPost]
         [Route("CreateSection")]
         public void CreateSection(FinalSection section)

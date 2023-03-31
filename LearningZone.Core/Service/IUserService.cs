@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,6 @@ namespace LearningZone.Core.Service
         void UpdateUser(FinalUser user);
         void DELETEUser(int id);
         string Auth(FinalUser login);
+        List<TrainerInfo> GetTrainerInfoByUserId(int usid);
     }
 }

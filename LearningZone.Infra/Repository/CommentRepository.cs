@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,14 @@ namespace LearningZone.Infra.Repository
             p.Add("UID", finalComment.User_Id, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("SecID", finalComment.Section_Id, DbType.Int32, direction: ParameterDirection.Input);
             dbContext.Connection.Execute("Final_Comment_Package.UpdateComment", p, commandType: CommandType.StoredProcedure);
+        }
+        public List<SecComments> SecComments(int SecId)
+        {
+            var p = new DynamicParameters();
+            p.Add("SecId", SecId, DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<SecComments> comments = dbContext.Connection.Query<SecComments>("Final_Comment_Package.GetCommentsBySecId", p
+                , commandType: CommandType.StoredProcedure);
+            return comments.ToList();
         }
     }
 }

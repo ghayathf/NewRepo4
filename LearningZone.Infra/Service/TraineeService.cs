@@ -20,7 +20,10 @@ namespace LearningZone.Infra.Service
         {
             traineeRepository.DELETETrainee(IDD);
         }
-
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            return traineeRepository.GetTraineeInfosByUsd(usid);
+        }
         public List<AcceptedTrainee> GetAllAccepted()
         {
            return traineeRepository.GetAllAccepted();
