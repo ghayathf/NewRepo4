@@ -11,7 +11,9 @@ namespace LearningZone.Core.DTO
         public decimal? Testimonialstatus { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public string Traineefield { get; set; }
         public decimal User_Id { get; set; }
+        public decimal Traineeid { get; set; }
         public string Imagename { get; set; }
     }
 }

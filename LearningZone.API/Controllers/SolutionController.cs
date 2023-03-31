@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,12 @@ namespace LearningZone.API.Controllers
         {
             this.solutionService = solutionService;
         }
-
+        [HttpGet]
+        [Route("getSolsTasks/{TID}")]
+        public List<TaskSols> GetTaskSols(int TID)
+        {
+            return solutionService.GetTaskSols(TID);
+        }
         [HttpPost]
         [Route("CreateSolution")]
         public void CreateSolution(FinalSolution solution)
@@ -62,7 +68,7 @@ namespace LearningZone.API.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullpath = Path.Combine("C:\\LearningHub_Angular-2\\src\\assets\\HomeAssets\\Solution", fileName);
+            var fullpath = Path.Combine("C:\\LearningHub_Angular\\src\\assets\\HomeAssets\\Solution", fileName);
 
             using (var stream = new FileStream(fullpath, FileMode.Create))
             {

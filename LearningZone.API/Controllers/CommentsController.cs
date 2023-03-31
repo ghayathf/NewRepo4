@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,12 @@ namespace LearningZone.API.Controllers
         public void CreateComment(FinalComment finalComment)
         {
             commentService.CreateComment(finalComment);
+        }
+        [HttpGet]
+        [Route("GetCommentsBySecId/{SecId}")]
+        public List<SecComments> SecComments(int SecId)
+        {
+            return commentService.SecComments(SecId);
         }
         [HttpDelete]
         [Route("DeleteComment/{id}")]

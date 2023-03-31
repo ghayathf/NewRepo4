@@ -20,7 +20,10 @@ namespace LearningZone.Infra.Service
         {
             traineeRepository.DELETETrainee(IDD);
         }
-
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            return traineeRepository.GetTraineeInfosByUsd(usid);
+        }
         public List<AcceptedTrainee> GetAllAccepted()
         {
            return traineeRepository.GetAllAccepted();
@@ -46,7 +49,10 @@ namespace LearningZone.Infra.Service
         {
             traineeRepository.InsertTrainee(trainee);
         }
-
+        public List<SectionTrainees> GetSectionTrainees(int secId)
+        {
+            return traineeRepository.GetSectionTrainees(secId);
+        }
         public List<SearchTrainee> SerchTrainees(SearchTrainee trainee)
         {
            return traineeRepository.SerchTrainees(trainee);

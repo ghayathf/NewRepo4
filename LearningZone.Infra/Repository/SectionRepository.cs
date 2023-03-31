@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,16 @@ namespace LearningZone.Infra.Repository
         {
             this.dbContext = dbContext;
         }
+        public List<SecInfo> GetSecInfos(int SecId)
+        {
+            var p = new DynamicParameters();
+            p.Add("SecId", SecId, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
+            IEnumerable<SecInfo> result = dbContext.Connection.Query<SecInfo>("Final_Section_Package.GETINFO",
+                p, commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
         public void CreateSection(FinalSection section)
         {
             var p = new DynamicParameters();
@@ -30,6 +40,7 @@ namespace LearningZone.Infra.Repository
             p.Add("capacity_section", section.Sectioncapacity, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("courseid", section.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("trainerid", section.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
             var result = dbContext.Connection.Execute("Final_Section_Package.CreateSection", p, commandType: CommandType.StoredProcedure);
         }
 

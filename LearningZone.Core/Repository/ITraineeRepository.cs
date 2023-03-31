@@ -15,8 +15,10 @@ namespace LearningZone.Core.Repository
         FinalTrainee GetTraineeByID(int IDD);
         void InsertTrainee(FinalTrainee trainee);
         void UpdateTrainee(FinalTrainee trainee);
-        void DELETETrainee(int IDD) ;
+        void DELETETrainee(int IDD);
+        List<SectionTrainees> GetSectionTrainees(int secId);
         List<SearchTrainee> SerchTrainees(SearchTrainee trainee);
+        List<TraineeInfo> GetTraineeInfosByUsd(int usid);
     }
 }
 //string Address , string Major ,string University ,string TraineeField , int RegisterStatus  ,int  User_ID 

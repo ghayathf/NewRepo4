@@ -1,6 +1,7 @@
 ﻿using LearningZone.Core.Data;
 using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
+using LearningZone.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,6 +19,18 @@ namespace LearningZone.API.Controllers
         public TraineeController(ITraineeService traineeService)
         {
             this.traineeService = traineeService;
+        }
+        [HttpGet]
+        [Route("GetSecTraineesInfos/{usid}")]
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            return traineeService.GetTraineeInfosByUsd(usid);
+        }
+        [HttpGet]
+        [Route("GetSecTrainees/{secId}")]
+        public List<SectionTrainees> GetSectionTrainees(int secId)
+        {
+            return traineeService.GetSectionTrainees(secId);
         }
         [HttpPost]
         [Route("InsertTrainee")]

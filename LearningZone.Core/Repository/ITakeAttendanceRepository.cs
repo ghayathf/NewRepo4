@@ -13,6 +13,6 @@ namespace LearningZone.Core.Repository
         void CreateAbsence(FinalTakeattendance takeattendance);
         void UpdateAttendance(FinalTakeattendance takeattendance);
         int RetrieveAttendanceCount(int IDD);
-        List<FinalTrainee> GetAbsentTrainees();
+        List<FinalTrainee> GetAbsentTrainees(int SecID);
     }
 }
