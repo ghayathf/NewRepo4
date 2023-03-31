@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,16 @@ namespace LearningZone.Infra.Repository
         {
             this.dbContext = dbContext;
         }
+        public List<TaskSols> GetTaskSols(int TID)
+        {
+            var p = new DynamicParameters();
+            p.Add("TID", TID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<TaskSols> result = dbContext.Connection.Query<TaskSols>("FINAL_SOLUTION_PACKAGE.GETALLSOLUTIONSTASKS",p,
+               commandType: CommandType.StoredProcedure);
 
+            return result.ToList();
+
+        }
         public void CreateSolution(FinalSolution solution)
         {
             var p = new DynamicParameters();

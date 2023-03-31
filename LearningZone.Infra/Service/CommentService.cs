@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -39,6 +40,10 @@ namespace LearningZone.Infra.Service
         public void UpdateComment(FinalComment finalComment)
         {
             commentRepository.UpdateComment(finalComment);
+        }
+        public List<SecComments> SecComments(int SecId)
+        {
+            return commentRepository.SecComments(SecId);
         }
     }
 }

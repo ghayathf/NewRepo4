@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace LearningZone.Core.Service
         void CreateComment(FinalComment finalComment);
         void UpdateComment(FinalComment finalComment);
         void DeleteComment(int id);
+        List<SecComments> SecComments(int SecId);
     }
 }

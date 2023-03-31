@@ -19,11 +19,29 @@ namespace LearningZone.Infra.Repository
         {
             this.dbContext = dbContext;
         }
+        public List<TraineeInfo> GetTraineeInfosByUsd(int usid)
+        {
+            var p = new DynamicParameters();
+            p.Add("usid", usid, dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Input);
+            IEnumerable<TraineeInfo> result = dbContext.Connection.Query<TraineeInfo>("Final_TraineeSection_Package.GetAllTraineeInfoByUserId ", p,
+             commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
         public void DELETETrainee(int IDD)
         {
             var p = new DynamicParameters();
             p.Add("IDD", IDD, dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Final_Trainee_PACKAGE.DELETETrainee", p, commandType: System.Data.CommandType.StoredProcedure);
+        }
+        public List<SectionTrainees> GetSectionTrainees(int secId)
+        {
+            var p = new DynamicParameters();
+            p.Add("secId", secId, dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Input);
+            IEnumerable<SectionTrainees> result = dbContext.Connection.Query<SectionTrainees>("Final_Trainee_PACKAGE.GetAllSectionTrainees ",p,
+             commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
         }
 
         public List<AcceptedTrainee> GetAllAccepted()

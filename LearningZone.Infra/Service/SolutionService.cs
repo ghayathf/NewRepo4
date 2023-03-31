@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -25,7 +26,10 @@ namespace LearningZone.Infra.Service
         {
             solutionRepository.DeleteSolution(id);
         }
-
+        public List<TaskSols> GetTaskSols(int TID)
+        {
+            return solutionRepository.GetTaskSols(TID);
+        }
         public void EnterSolutionMark(int id, double mark)
         {
             solutionRepository.EnterSolutionMark(id, mark);
