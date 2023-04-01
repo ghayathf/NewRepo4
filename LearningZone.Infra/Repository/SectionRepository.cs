@@ -19,6 +19,17 @@ namespace LearningZone.Infra.Repository
         {
             this.dbContext = dbContext;
         }
+        public List<TSInfo> GetTSInfos(int SecId, int traineeId)
+        {
+            var p = new DynamicParameters();
+            p.Add("SecId", SecId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("traineeId", traineeId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            IEnumerable<TSInfo> result = dbContext.Connection.Query<TSInfo>("Final_Section_Package.GETSECTIONINFOS",
+                p, commandType: CommandType.StoredProcedure);
+
+            return result.ToList();
+        }
         public List<SecInfo> GetSecInfos(int SecId)
         {
             var p = new DynamicParameters();

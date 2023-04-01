@@ -15,5 +15,6 @@ namespace LearningZone.Core.Service
         void UpdateSection(FinalSection section);
         void DeleteSection(int id);
         List<SecInfo> GetSecInfos(int SecId);
+        List<TSInfo> GetTSInfos(int SecId, int traineeId);
     }
 }

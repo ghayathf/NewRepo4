@@ -29,7 +29,10 @@ namespace LearningZone.Infra.Service
         {
             sectionRepository.DeleteSection(id);
         }
-
+        public List<TSInfo> GetTSInfos(int SecId, int traineeId)
+        {
+            return sectionRepository.GetTSInfos(SecId, traineeId);
+        }
         public async Task<List<FinalSection>> GetAllSections()
         {
             return await sectionRepository.GetAllSections();

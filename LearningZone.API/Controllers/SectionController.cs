@@ -20,6 +20,12 @@ namespace LearningZone.API.Controllers
             this.sectionService = sectionService;
         }
         [HttpGet]
+        [Route("GetTSInfos/{SecId}/{traineeId}")]
+        public List<TSInfo> GetTSInfos(int SecId, int traineeId)
+        {
+            return sectionService.GetTSInfos(SecId, traineeId);
+        }
+        [HttpGet]
         [Route("GetSecInfo/{SecId}")]
         public List<SecInfo> GetSecInfos(int SecId)
         {
