@@ -51,6 +51,7 @@ namespace LearningZone.Infra.Repository
             p.Add("capacity_section", section.Sectioncapacity, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("courseid", section.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("trainerid", section.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
             var result = dbContext.Connection.Execute("Final_Section_Package.CreateSection", p, commandType: CommandType.StoredProcedure);
         }
 
