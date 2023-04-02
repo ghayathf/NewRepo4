@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Core.Service;
 using System;
@@ -15,7 +16,10 @@ namespace LearningZone.Infra.Service
         {
             _homeRepository = homeRepository;
         }
-
+        public List<Lengths> lengths()
+        {
+            return _homeRepository.lengths();
+        }
         public void CreateHomeInformation(FinalHomepage finalHomepage)
         {
             _homeRepository.CreateHomeInformation(finalHomepage);

@@ -1,4 +1,5 @@
 ﻿using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,12 @@ namespace LearningZone.API.Controllers
         {
             _homeService = homeService;
         }
-
+        [HttpGet]
+        [Route("Lengths")]
+        public List<Lengths> lengths()
+        {
+            return _homeService.lengths();
+        }
         [HttpGet]
         [Route("GetAllHomeInformatio")]
         public List<FinalHomepage> GetAllHomeInformation()

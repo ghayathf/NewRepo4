@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LearningZone.Core.Common;
 using LearningZone.Core.Data;
+using LearningZone.Core.DTO;
 using LearningZone.Core.Repository;
 using LearningZone.Infra.Common;
 using System;
@@ -19,7 +20,11 @@ namespace LearningZone.Infra.Repository
             this._dbContext = _dbContext;
 
         }
-
+        public List<Lengths> lengths()
+        {
+            IEnumerable<Lengths> result = _dbContext.Connection.Query<Lengths>("Final_HomePage_Package.getTableLengths", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public void CreateHomeInformation(FinalHomepage finalHomepage)
         {
             var p = new DynamicParameters();
